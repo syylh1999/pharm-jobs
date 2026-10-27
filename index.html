@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="上饶卫生健康职业学院 2024 级药学专业（2027 届）就业信息雷达：聚合江西省大学生就业服务平台、康强医疗人才网等公开岗位，支持按地点、薪资、实习/全职、学历、经验筛选与多岗位对比。">
+  <meta property="og:title" content="赣药职通车 · 江西高职药学就业雷达">
+  <meta property="og:description" content="40 个江西药学相关岗位，支持按地点、薪资、实习/全职、学历、证书筛选与 4 岗对比。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>赣药职通车 · 江西高职药学就业雷达</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='43' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E药%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top" aria-label="回到顶部">
+      <span class="brand-mark">药</span>
+      <span>
+        <strong>赣药职通车</strong>
+        <small>上饶卫健职院 · 药学 2024 级</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="页面导航">
+      <a href="#jobs">岗位库</a>
+      <a href="#events">招聘会</a>
+      <a href="#sources">数据来源</a>
+      <a href="#guide">使用说明</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-text" id="shareBtn" type="button" title="复制当前筛选链接">
+        <span aria-hidden="true">↗</span><span class="label">分享</span>
+      </button>
+      <button class="icon-text" id="favoritesBtn" type="button" title="查看收藏">
+        <span aria-hidden="true">★</span><span class="label">收藏</span>
+        <span class="pill" id="favCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> 为 2027 届高职药学定制</div>
+        <h1 id="hero-title">把招聘信息，<br><em>变成可比较的选择。</em></h1>
+        <p class="lead">
+          聚合江西省大学生就业服务平台、康强医疗人才网等公开岗位，覆盖医院药房、连锁药店、药品生产与质量、医药流通、临床研究。
+          可以按地点、薪资、实习/全职、学历、经验、证书要求筛选，最多把 4 个岗位放在一张表里比较。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#jobs">开始筛岗位 <span aria-hidden="true">↓</span></a>
+          <button class="btn ghost" id="localBtn" type="button">只看上饶本地</button>
+          <button class="btn ghost" type="button" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})">怎么用 / 怎么更新</button>
+        </div>
+        <div class="hero-meta">
+          <span><b id="statTotal">—</b> 个在招岗位</span>
+          <span><b id="statLocal">—</b> 个上饶岗位</span>
+          <span><b id="statIntern">—</b> 个实习 / 见习</span>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="数据状态">
+        <div class="panel-head">
+          <span>Data status</span>
+          <span class="live"><i></i> 已同步</span>
+        </div>
+        <div class="update-row">
+          <span>最近更新</span>
+          <strong id="lastUpdated">—</strong>
+        </div>
+        <div class="source-row">
+          <span class="source-dot"></span>
+          <div><b>省级就业平台</b><small>江西省大学生就业服务平台</small></div>
+          <span id="statPlatform">—</span>
+        </div>
+        <div class="source-row">
+          <span class="source-dot kq"></span>
+          <div><b>康强医疗</b><small>上饶 / 赣州本地医院药房</small></div>
+          <span id="statKq">—</span>
+        </div>
+        <div class="panel-note">
+          招聘信息具有时效性。投递前请打开来源页面核对岗位是否仍在招；平台不会以任何名义收取押金、培训费或服装费。
+        </div>
+        <button class="panel-update" id="refreshData" type="button">检查更新</button>
+      </aside>
+    </section>
+
+    <section class="quick-strip" aria-label="快捷筛选">
+      <button type="button" data-quick="local">📍 上饶本地</button>
+      <button type="button" data-quick="guangxin">广信区</button>
+      <button type="button" data-quick="guangfeng">广丰区</button>
+      <button type="button" data-quick="intern">实习 / 见习</button>
+      <button type="button" data-quick="fresh">应届友好</button>
+      <button type="button" data-quick="no-cert">无需证书</button>
+      <button type="button" data-quick="five">五险一金</button>
+    </section>
+
+    <div class="filter-backdrop" id="filterBackdrop"></div>
+    <section class="workspace" id="jobs" aria-labelledby="jobs-title">
+      <button class="btn dark mobile-filter-btn" id="openFilters" type="button" style="margin-bottom:10px">筛选岗位</button>
+
+      <aside class="filters" aria-label="筛选条件">
+        <div class="filter-head">
+          <h2>筛选条件</h2>
+          <button type="button" id="resetFilters">重置</button>
+        </div>
+
+        <div class="search-box">
+          <input id="searchInput" type="search" placeholder="搜岗位、公司、技能…" autocomplete="off" aria-label="搜索岗位">
+          <kbd>/</kbd>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">工作地点 <small>可多选</small></div>
+          <div class="chips" id="locChips"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">岗位类型</div>
+          <div class="segmented">
+            <button type="button" data-type="实习">实习 / 见习</button>
+            <button type="button" data-type="全职">全职</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">薪资下限 <small id="salaryLabel">不限</small></div>
+          <input id="salaryRange" type="range" min="0" max="5500" step="500" value="0" aria-label="最低薪资">
+          <div class="salary-readout"><span>不限</span><span>5.5K+</span></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">岗位方向</div>
+          <div class="chips" id="catChips"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">学历门槛</div>
+          <div class="segmented">
+            <button type="button" data-edu="all">全部</button>
+            <button type="button" data-edu="special">专科可投</button>
+            <button type="button" data-edu="unlimited">学历不限</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">经验要求</div>
+          <div class="segmented">
+            <button type="button" data-exp="all">全部</button>
+            <button type="button" data-exp="fresh">应届友好</button>
+            <button type="button" data-exp="experienced">需经验</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">证书要求</div>
+          <div class="segmented">
+            <button type="button" data-cert="all">全部</button>
+            <button type="button" data-cert="no-required">无需证书</button>
+            <button type="button" data-cert="required">需证书</button>
+          </div>
+          <div class="source-note" style="margin-top:6px">药士/药师证是医院药房常见门槛；看到“证书优先”的岗位，未考证也可以先投实习。</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">福利</div>
+          <div class="chips" id="benChips"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">发布时间</div>
+          <select class="filter-select" id="daysSelect" aria-label="发布时间">
+            <option value="0">不限</option>
+            <option value="7">近 7 天更新</option>
+            <option value="30">近 30 天更新</option>
+            <option value="60">近 60 天更新</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">信息来源</div>
+          <select class="filter-select" id="sourceSelect" aria-label="信息来源">
+            <option value="all">全部来源</option>
+            <option value="platform">省级就业平台</option>
+            <option value="fair">2027 届招聘会</option>
+            <option value="kq">康强医疗人才网</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <div class="switch-row">
+            <span>只看我的收藏</span>
+            <label class="switch">
+              <input type="checkbox" id="favSwitch">
+              <span></span>
+            </label>
+          </div>
+          <div class="source-note">收藏保存在本机浏览器，不上传服务器。</div>
+        </div>
+      </aside>
+
+      <div class="results">
+        <div class="results-head">
+          <div>
+            <h2 id="jobs-title">岗位库 <span id="resultCount">—</span></h2>
+            <p id="resultSummary">正在加载岗位数据…</p>
+          </div>
+          <div class="results-actions">
+            <select class="sort-select" id="sortSelect" aria-label="排序">
+              <option value="recommended">推荐排序</option>
+              <option value="newest">最新发布</option>
+              <option value="salary">薪资从高到低</option>
+              <option value="local">上饶优先</option>
+              <option value="company">按公司名</option>
+            </select>
+            <div class="view-toggle" role="group" aria-label="视图">
+              <button type="button" data-view="grid" title="卡片视图" aria-label="卡片视图">▦</button>
+              <button type="button" data-view="list" title="列表视图" aria-label="列表视图">☰</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="active-filters" id="activeFilters"></div>
+        <div class="job-grid" id="jobGrid">
+          <div class="empty" style="grid-column:1/-1">
+            <div class="icon">⏳</div>
+            <h3>正在整理岗位…</h3>
+            <p>从省级就业平台与医疗招聘平台载入公开数据。</p>
+          </div>
+        </div>
+        <div class="empty" id="emptyState" hidden>
+          <div class="icon">🔍</div>
+          <h3>没有符合条件的岗位</h3>
+          <p>试试放宽薪资、地点或证书要求；也可以清空筛选重新看。</p>
+          <button class="btn primary" id="resetEmpty" type="button">清空筛选</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="events" aria-labelledby="events-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Campus calendar</div>
+          <h2 id="events-title">近期招聘会</h2>
+        </div>
+        <p>优先参加医学类、药学类专场：岗位集中、现场可直投，部分医院会当天初面。已结束的场次仍可点开查看参会企业和岗位。</p>
+      </div>
+      <div class="event-grid" id="eventGrid"></div>
+    </section>
+
+    <section class="section" id="sources" aria-labelledby="sources-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Source directory</div>
+          <h2 id="sources-title">官方入口与数据来源</h2>
+        </div>
+        <p>岗位数据优先来自省级就业平台和医疗招聘平台；下方同时保留学校、人社、人才网的官方入口，方便你核对政策与投递。</p>
+      </div>
+      <div class="source-grid" id="sourceGrid"></div>
+    </section>
+
+    <section class="section" id="guide" aria-labelledby="guide-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">How to use</div>
+          <h2 id="guide-title">怎么用，怎么更新</h2>
+        </div>
+        <p>这份网页既可以当作岗位清单，也可以当作辅导员开班会、发班级群的就业信息底稿。</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>三步找到更适合的岗位</h3>
+          <div class="steps">
+            <div class="step"><b>1</b><span><strong>先定地点。</strong>上饶本地优先看广信区、广丰区、鄱阳、余干、铅山；想去南昌/赣州，再切城市。</span></div>
+            <div class="step"><b>2</b><span><strong>再看证书与经验。</strong>没考药士证，先勾“无需证书”和“应届友好”；有证再把“需证书”岗位放进来比较。</span></div>
+            <div class="step"><b>3</b><span><strong>把 2—4 个岗位加入对比。</strong>重点比：薪资、是否包住、离家的距离、有没有转正/考证支持、单位类型。</span></div>
+          </div>
+          <div class="warn">
+            招聘信息会过期，尤其是医院编制外岗位和药店门店岗。投递前务必打开“来源页面”确认；如果页面显示“停止招聘/已下线”，以来源为准。
+          </div>
+        </div>
+
+        <div class="guide-card dark">
+          <h3>数据怎么保持更新</h3>
+          <p>本页是“可更新的静态网页”，有三种更新方式，按你的使用场景选一种即可。</p>
+          <ol>
+            <li><strong>本地手动：</strong>双击 <code>更新数据.bat</code>，脚本会重新抓取省级平台并重建数据，刷新网页即可。</li>
+            <li><strong>本地自动：</strong>双击 <code>启动网页.bat</code>，后台每 6 小时自动同步一次；页面上的“检查更新”也可手动触发。</li>
+            <li><strong>在线分享：</strong>把整个文件夹放到 GitHub，开启 Pages 与 Actions，工作日每天 02:00 自动更新，链接可直接发班级群。</li>
+          </ol>
+          <div class="update-status"><i></i><span id="updateStatus">当前快照：加载中…</span></div>
+          <p style="margin-top:10px;font-size:10px;color:#9db3c4">更新脚本只抓公开页面，不登录、不绕过验证码；遇到来源网站改版会保留上一次快照，不会把空数据覆盖上去。</p>
+        </div>
+      </div>
+
+      <div class="guide-grid" style="margin-top:14px">
+        <div class="guide-card">
+          <h3>辅导员建议：先保底，再冲刺</h3>
+          <ul>
+            <li><strong>保底：</strong>上饶本地医院药房、连锁药店门店岗，离家近、生活成本低，适合先积累调剂/ GSP 经验。</li>
+            <li><strong>冲刺：</strong>南昌/赣州药企 QA/QC、医药流通采购、CRC；薪资更高，但要看是否包住、是否接受专科。</li>
+            <li><strong>证书：</strong>药士/药师证是医院药房和部分药店的硬门槛，建议把“考证时间”写进班级就业推进表。</li>
+            <li><strong>实习转正：</strong>益丰、汇仁堂、龙开河等实习岗明确写了转正/储备路径，实习前问清转正比例和考核方式。</li>
+          </ul>
+          <p class="guide-disclaimer">
+            <strong>免责声明：</strong>以上辅导员建议仅为就业指导参考，不构成录用承诺、职业规划结论或政策依据，具体以招聘单位、来源页面及学校正式通知为准。请结合学生个人情况谨慎判断，<strong>仅供参考</strong>。
+          </p>
+        </div>
+        <div class="guide-card">
+          <h3>投递前的 5 个核对</h3>
+          <ol>
+            <li>岗位是否仍在招聘（来源页面是否显示“招聘中”）。</li>
+            <li>工作地点是医院院区、门店还是仓库，是否提供住宿。</li>
+            <li>薪资是“到手”还是“含绩效”，试用期多久、有没有五险。</li>
+            <li>是否要求药士/药师证、职称或工作经验。</li>
+            <li>是否收押金、培训费、服装费——凡收费都先停一下，和辅导员核实。</li>
+          </ol>
+          <p style="margin-top:8px;color:var(--muted);font-size:10px">投诉举报：江西省大学生就业服务平台设有招聘投诉入口；也可联系学校就业部门或当地人社部门。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <b>赣药职通车 · 江西高职药学就业雷达</b><br>
+      为上饶卫生健康职业学院 2024 级药学专业（2027 届）整理 · 数据仅作就业信息汇总，不构成录用承诺。<br>
+      岗位来源：江西省大学生就业服务平台、康强医疗人才网等公开页面。
+    </div>
+    <div class="footer-links">
+      <a href="#jobs">岗位库</a>
+      <a href="#events">招聘会</a>
+      <a href="#sources">数据来源</a>
+      <a href="#guide">更新说明</a>
+      <a href="README.md" target="_blank" rel="noopener">使用手册</a>
+    </div>
+  </div>
+</footer>
+
+<div class="compare-bar" id="compareBar" aria-live="polite"></div>
+
+<div class="modal-backdrop" id="jobModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="岗位详情">
+  <div class="modal">
+    <div class="modal-head" id="jobModalHead"></div>
+    <div class="modal-body" id="jobModalBody"></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="compareModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="岗位对比">
+  <div class="modal wide">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow">Compare</div>
+        <h2>岗位对比</h2>
+        <p>把薪资、地点、证书、福利放在同一张表里看。</p>
+      </div>
+      <button class="modal-close" data-close-modal type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body" id="compareModalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data/jobs.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
