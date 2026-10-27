@@ -8,11 +8,791 @@
   <meta property="og:title" content="赣药职通车 · 江西高职药学就业雷达">
   <meta property="og:description" content="40 个江西药学相关岗位，支持按地点、薪资、实习/全职、学历、证书筛选与 4 岗对比。">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>赣药职通车 · 江西高职药学就业雷达</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='43' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E药%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+:root {
+  --ink: #0c1d2e;
+  --ink-2: #21384c;
+  --muted: #64748b;
+  --muted-2: #8b9bab;
+  --line: #e2e8ec;
+  --paper: #f7f8f5;
+  --card: #ffffff;
+  --teal: #0f766e;
+  --teal-dark: #0b5f59;
+  --teal-soft: #e3f3ef;
+  --mint: #d9f3ec;
+  --coral: #e8583d;
+  --coral-soft: #fdeae5;
+  --amber: #b7791f;
+  --amber-soft: #fdf3df;
+  --navy: #0e2438;
+  --navy-2: #14344e;
+  --shadow-sm: 0 1px 2px rgba(12, 29, 46, .05), 0 4px 14px rgba(12, 29, 46, .04);
+  --shadow-md: 0 10px 30px rgba(12, 29, 46, .08);
+  --shadow-lg: 0 24px 70px rgba(12, 29, 46, .16);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --max: 1320px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 500px at 8% -4%, rgba(217, 243, 236, .75), transparent 62%),
+    radial-gradient(700px 420px at 100% 8%, rgba(253, 234, 229, .65), transparent 60%),
+    var(--paper);
+  font-family: var(--font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body.no-scroll { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+::selection { background: var(--mint); color: var(--ink); }
+
+.wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: rgba(247, 248, 245, .82);
+  border-bottom: 1px solid rgba(12, 29, 46, .08);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  height: 68px;
+}
+.brand { display: flex; align-items: center; gap: 11px; min-width: 220px; }
+.brand-mark {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(145deg, var(--teal), #0a4f4b);
+  font-weight: 800;
+  font-size: 19px;
+  box-shadow: 0 6px 16px rgba(15, 118, 110, .24);
+}
+.brand strong { display: block; font-size: 16px; letter-spacing: .02em; line-height: 1.2; }
+.brand small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.topnav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.topnav a {
+  color: var(--ink-2);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 13px;
+  border-radius: 10px;
+  transition: .2s;
+}
+.topnav a:hover { background: rgba(15, 118, 110, .08); color: var(--teal); }
+.top-actions { display: flex; align-items: center; gap: 8px; }
+.icon-text {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.7);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: .2s;
+}
+.icon-text:hover { border-color: #b9d6d1; background: #fff; color: var(--teal); }
+.icon-text .pill {
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  display: inline-grid; place-items: center;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 10px;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(340px, .8fr);
+  gap: 44px;
+  align-items: center;
+  padding: 58px 0 34px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.eyebrow .pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(232, 88, 61, .12);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(232, 88, 61, .12); }
+  50% { box-shadow: 0 0 0 8px rgba(232, 88, 61, .04); }
+}
+.hero h1 {
+  margin: 15px 0 17px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -.045em;
+  font-weight: 850;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--teal);
+  position: relative;
+  white-space: nowrap;
+}
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 3px;
+  height: 10px;
+  background: var(--mint);
+  z-index: -1;
+  border-radius: 3px;
+}
+.hero p.lead {
+  max-width: 660px;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 1.85;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 13.5px;
+  font-weight: 750;
+  transition: .2s;
+  white-space: nowrap;
+}
+.btn.primary { background: var(--teal); color: #fff; box-shadow: 0 10px 24px rgba(15,118,110,.22); }
+.btn.primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+.btn.dark { background: var(--navy); color: #fff; }
+.btn.dark:hover { background: var(--navy-2); }
+.btn.ghost { background: rgba(255,255,255,.7); border-color: var(--line); color: var(--ink-2); }
+.btn.ghost:hover { background: #fff; border-color: #bdD8d3; color: var(--teal); }
+.btn.soft { background: var(--teal-soft); color: var(--teal-dark); }
+.btn.soft:hover { background: #d4ece7; }
+.btn.small { padding: 8px 12px; font-size: 12px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 31px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(12, 29, 46, .09);
+}
+.hero-meta span { color: var(--muted); font-size: 12px; }
+.hero-meta b { display: block; color: var(--ink); font-size: 24px; line-height: 1.1; letter-spacing: -.03em; }
+
+.hero-panel {
+  background: linear-gradient(150deg, var(--navy), #0c2b44 60%, #0b3b3a);
+  color: #eaf2f6;
+  border-radius: 24px;
+  padding: 23px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  right: -110px; top: -110px;
+  background: radial-gradient(circle, rgba(217,243,236,.2), transparent 68%);
+}
+.hero-panel::after {
+  content: "";
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  left: -90px; bottom: -80px;
+  background: radial-gradient(circle, rgba(232,88,61,.22), transparent 68%);
+}
+.panel-head {
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #9db3c4;
+  font-weight: 800;
+}
+.live { display: inline-flex; align-items: center; gap: 6px; color: #a7e6d9; font-size: 10.5px; }
+.live i { width: 6px; height: 6px; border-radius: 50%; background: #55d7c0; box-shadow: 0 0 0 4px rgba(85,215,192,.12); }
+.update-row {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,.11);
+}
+.update-row span { color: #9db3c4; font-size: 12px; }
+.update-row strong { font-size: 17px; letter-spacing: -.01em; }
+.source-row {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 8px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.source-row:last-of-type { border-bottom: 0; }
+.source-dot { width: 7px; height: 7px; border-radius: 50%; background: #55d7c0; }
+.source-dot.kq { background: #f5a18f; }
+.source-row b { display: block; font-size: 12.5px; font-weight: 700; }
+.source-row small { display: block; color: #9db3c4; font-size: 10.5px; }
+.source-row > span:last-child { font-size: 18px; font-weight: 800; color: #fff; }
+.panel-note {
+  position: relative; z-index: 1;
+  margin-top: 14px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.07);
+  color: #b9cbd7;
+  font-size: 10.5px;
+  line-height: 1.65;
+}
+.panel-update {
+  position: relative; z-index: 1;
+  width: 100%;
+  margin-top: 11px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: #eaf2f6;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  transition: .2s;
+}
+.panel-update:hover { background: rgba(255,255,255,.12); }
+
+/* ---------- quick strip ---------- */
+.quick-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 6px 0 26px;
+}
+.quick-strip button {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.75);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--ink-2);
+  transition: .2s;
+}
+.quick-strip button:hover { border-color: #b7d6d1; color: var(--teal); background: #fff; }
+.quick-strip button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* ---------- workspace ---------- */
+.workspace {
+  display: grid;
+  grid-template-columns: 278px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 14px 0 50px;
+}
+.filters {
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 17px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 86px;
+  max-height: calc(100vh - 104px);
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.filter-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.filter-head h2 { margin: 0; font-size: 13px; letter-spacing: .04em; }
+.filter-head button { border: 0; background: none; color: var(--muted); font-size: 11px; font-weight: 700; padding: 4px; }
+.filter-head button:hover { color: var(--coral); }
+.search-box { position: relative; margin-bottom: 17px; }
+.search-box input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 11px 38px 11px 12px;
+  font-size: 12.5px;
+  outline: none;
+  transition: .2s;
+}
+.search-box input:focus { border-color: #84bdb4; box-shadow: 0 0 0 4px rgba(15,118,110,.08); }
+.search-box kbd {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 5px; padding: 1px 5px;
+  color: var(--muted-2); font-size: 9px; background: #f8faf9;
+}
+.filter-group { padding: 13px 0; border-top: 1px solid #edf1f3; }
+.filter-group:first-of-type { border-top: 0; padding-top: 0; }
+.filter-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; color: var(--ink-2); font-size: 11px; font-weight: 800; letter-spacing: .03em; }
+.filter-label small { color: var(--muted-2); font-weight: 500; letter-spacing: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-2);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 10.5px;
+  font-weight: 650;
+  line-height: 1.35;
+  transition: .16s;
+}
+.chip:hover { border-color: #a9cec8; color: var(--teal); }
+.chip.active { background: var(--teal-soft); border-color: #9bcfc7; color: var(--teal-dark); }
+.chip .n { color: var(--muted-2); font-size: 9px; margin-left: 3px; }
+.segmented { display: flex; background: #eef2f1; padding: 3px; border-radius: 9px; gap: 3px; }
+.segmented button { flex: 1; border: 0; background: transparent; border-radius: 7px; padding: 6px 4px; font-size: 10.5px; font-weight: 700; color: var(--muted); }
+.segmented button.active { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(12,29,46,.1); }
+.salary-readout { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; margin-top: 6px; }
+input[type="range"] { width: 100%; accent-color: var(--teal); height: 5px; }
+.switch-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; font-size: 11px; color: var(--ink-2); }
+.switch { position: relative; width: 34px; height: 20px; flex: 0 0 auto; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch span { position: absolute; inset: 0; border-radius: 999px; background: #dbe3e6; transition: .2s; }
+.switch span::after { content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; top: 3px; left: 3px; box-shadow: 0 1px 3px rgba(0,0,0,.18); transition: .2s; }
+.switch input:checked + span { background: var(--teal); }
+.switch input:checked + span::after { transform: translateX(14px); }
+.filter-select {
+  width: 100%; border: 1px solid var(--line); border-radius: 9px; background: #fff;
+  padding: 8px 9px; font-size: 11px; outline: none;
+}
+.filter-select:focus { border-color: #84bdb4; }
+
+/* ---------- results ---------- */
+.results { min-width: 0; }
+.results-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin: 6px 0 14px; }
+.results-head h2 { margin: 0; font-size: 20px; letter-spacing: -.025em; }
+.results-head h2 span { color: var(--muted-2); font-size: 12px; font-weight: 600; margin-left: 5px; }
+.results-head p { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; }
+.results-actions { display: flex; gap: 7px; align-items: center; }
+.sort-select {
+  border: 1px solid var(--line); background: #fff; border-radius: 9px;
+  padding: 8px 10px; font-size: 11px; font-weight: 650; outline: none;
+}
+.view-toggle { display: flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; }
+.view-toggle button { border: 0; background: #fff; padding: 7px 8px; color: var(--muted); font-size: 13px; }
+.view-toggle button.active { background: var(--ink); color: #fff; }
+.active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.active-filter {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--teal-soft); color: var(--teal-dark);
+  border-radius: 999px; padding: 4px 8px; font-size: 10px; font-weight: 700;
+}
+.active-filter button { border: 0; background: none; color: inherit; padding: 0; font-size: 12px; line-height: 1; }
+.active-filter.clear { background: var(--coral-soft); color: #a83c27; }
+
+.job-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.job-grid.list { grid-template-columns: 1fr; }
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.job-card::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--teal); opacity: 0; transition: .2s;
+}
+.job-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #c9ddd9; }
+.job-card:hover::before { opacity: 1; }
+.job-card.local { background: linear-gradient(180deg, #fff, #fbfdfc); }
+.job-card.selected { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.1); }
+.card-top { display: flex; align-items: flex-start; gap: 9px; }
+.logo {
+  width: 38px; height: 38px; border-radius: 11px;
+  display: grid; place-items: center;
+  background: var(--teal-soft); color: var(--teal-dark);
+  font-size: 14px; font-weight: 850; flex: 0 0 auto;
+  letter-spacing: -.04em;
+}
+.logo.hospital { background: #e7f0fa; color: #2f5f8f; }
+.logo.chain { background: #fff0e9; color: #b64a2c; }
+.logo.pharma { background: #edf1e3; color: #5d6b2e; }
+.company-box { min-width: 0; flex: 1; }
+.company-name { font-size: 11.5px; font-weight: 750; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.company-sub { color: var(--muted-2); font-size: 9.5px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fav-btn {
+  border: 1px solid var(--line); background: #fff; color: var(--muted-2);
+  width: 29px; height: 29px; border-radius: 9px; display: grid; place-items: center;
+  font-size: 14px; flex: 0 0 auto; transition: .18s;
+}
+.fav-btn:hover { border-color: #f1b8a9; color: var(--coral); }
+.fav-btn.on { background: var(--coral-soft); border-color: #f5c3b6; color: var(--coral); }
+.job-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin: 12px 0 7px; }
+.job-title { font-size: 16px; line-height: 1.35; font-weight: 800; letter-spacing: -.02em; margin: 0; }
+.salary { color: var(--coral); font-size: 14.5px; font-weight: 850; white-space: nowrap; letter-spacing: -.02em; }
+.salary small { font-size: 9px; font-weight: 600; color: var(--muted-2); margin-left: 2px; }
+.badges { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 9px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  border-radius: 5px; padding: 2px 5px;
+  font-size: 8.5px; font-weight: 750; letter-spacing: .01em;
+  background: #f2f5f4; color: var(--muted);
+}
+.badge.local { background: var(--teal-soft); color: var(--teal-dark); }
+.badge.intern { background: #eaf1fb; color: #2e5f9a; }
+.badge.cert { background: var(--amber-soft); color: #8b5a11; }
+.badge.fresh { background: #edf7ee; color: #3e7a44; }
+.badge.source { background: #f4f0fa; color: #6a4a91; }
+.meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; margin-bottom: 9px; }
+.meta { display: flex; align-items: center; gap: 4px; color: var(--muted); font-size: 10px; min-width: 0; }
+.meta b { color: var(--ink-2); font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meta i { font-style: normal; opacity: .65; font-size: 10px; }
+.desc {
+  color: var(--ink-2); font-size: 10.5px; line-height: 1.6;
+  margin: 0 0 9px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 11px; }
+.tag { background: #f6f8f7; border: 1px solid #edf1f0; color: var(--muted); border-radius: 4px; padding: 2px 5px; font-size: 8.5px; }
+.card-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  border-top: 1px solid #eef2f1; padding-top: 10px; margin-top: auto;
+}
+.contact-mini { min-width: 0; }
+.contact-mini b { display: block; font-size: 10px; font-weight: 750; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.contact-mini span { display: block; color: var(--muted-2); font-size: 8.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-actions { display: flex; gap: 5px; flex: 0 0 auto; }
+.mini-btn {
+  border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+  border-radius: 7px; padding: 6px 8px; font-size: 9.5px; font-weight: 750; transition: .18s;
+}
+.mini-btn:hover { border-color: #a9cec8; color: var(--teal); }
+.mini-btn.apply { background: var(--teal); border-color: var(--teal); color: #fff; }
+.mini-btn.apply:hover { background: var(--teal-dark); }
+.mini-btn.cmp.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+.job-grid.list .job-card { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0 22px; }
+.job-grid.list .card-top { grid-column: 1; }
+.job-grid.list .job-title-row { grid-column: 1; }
+.job-grid.list .badges { grid-column: 1; }
+.job-grid.list .meta-grid { grid-column: 2; grid-row: 1 / span 3; align-content: center; margin: 0; }
+.job-grid.list .desc { grid-column: 1 / -1; margin-top: 10px; -webkit-line-clamp: 3; }
+.job-grid.list .card-tags { grid-column: 1; }
+.job-grid.list .card-foot { grid-column: 1 / -1; }
+
+.empty {
+  grid-column: 1 / -1;
+  background: #fff; border: 1px dashed #cfdcd9; border-radius: 16px;
+  padding: 54px 20px; text-align: center;
+}
+.empty .icon { font-size: 30px; }
+.empty h3 { margin: 10px 0 4px; font-size: 15px; }
+.empty p { margin: 0; color: var(--muted); font-size: 11.5px; }
+.empty button { margin-top: 15px; }
+
+.load-more { display: flex; justify-content: center; margin-top: 18px; }
+
+/* ---------- sections ---------- */
+.section { padding: 34px 0 18px; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 16px; }
+.section-head h2 { margin: 6px 0 0; font-size: 24px; letter-spacing: -.03em; }
+.section-head p { max-width: 520px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; text-align: right; }
+.event-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.event-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 15px;
+  padding: 16px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+}
+.event-card.upcoming { border-color: #b9d9d3; background: linear-gradient(180deg, #fff, #f8fcfb); }
+.event-date { display: flex; align-items: baseline; gap: 7px; color: var(--teal); font-weight: 850; }
+.event-date b { font-size: 24px; letter-spacing: -.04em; }
+.event-date span { font-size: 10px; color: var(--muted); font-weight: 650; }
+.event-status { position: absolute; right: 14px; top: 14px; border-radius: 999px; padding: 3px 7px; font-size: 8.5px; font-weight: 750; background: var(--teal-soft); color: var(--teal-dark); }
+.event-status.past { background: #f1f3f3; color: var(--muted); }
+.event-card h3 { margin: 10px 0 6px; font-size: 13px; line-height: 1.5; }
+.event-loc { color: var(--muted); font-size: 10px; line-height: 1.55; }
+.event-nums { display: flex; gap: 16px; margin: 10px 0; padding: 9px 0; border-top: 1px solid #eef2f1; border-bottom: 1px solid #eef2f1; }
+.event-nums b { display: block; font-size: 15px; line-height: 1.2; }
+.event-nums span { font-size: 8.5px; color: var(--muted-2); }
+.event-note { color: var(--ink-2); font-size: 10px; line-height: 1.55; margin-bottom: 10px; }
+.event-link { font-size: 10.5px; font-weight: 750; color: var(--teal); }
+
+.source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.source-card {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 13px;
+  padding: 14px; transition: .18s; box-shadow: var(--shadow-sm);
+}
+.source-card:hover { transform: translateY(-2px); border-color: #c4ddd8; box-shadow: var(--shadow-md); }
+.source-card .s-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.source-card h3 { margin: 0; font-size: 12px; }
+.source-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.6; flex: 1; }
+.source-card .s-link { font-size: 9.5px; color: var(--teal); font-weight: 700; }
+.source-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.source-tags span { background: #f5f8f7; color: var(--muted); border-radius: 4px; padding: 2px 5px; font-size: 8px; }
+
+.guide-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; }
+.guide-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-sm); }
+.guide-card h3 { margin: 0 0 10px; font-size: 15px; letter-spacing: -.02em; }
+.guide-card p, .guide-card li { color: var(--ink-2); font-size: 11.5px; line-height: 1.8; }
+.guide-card ol, .guide-card ul { margin: 0; padding-left: 18px; }
+.guide-card li { margin-bottom: 5px; }
+.guide-card.dark { background: var(--navy); color: #e7eff4; border-color: transparent; }
+.guide-card.dark h3 { color: #fff; }
+.guide-card.dark p, .guide-card.dark li { color: #b9cbd7; }
+.guide-card.dark a { color: #8fe0d0; text-decoration: underline; text-underline-offset: 2px; }
+.steps { display: grid; gap: 8px; margin-top: 12px; }
+.step { display: flex; gap: 10px; align-items: flex-start; }
+.step b { width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--teal-soft); color: var(--teal-dark); font-size: 9.5px; }
+.step span { font-size: 10.5px; color: var(--ink-2); line-height: 1.55; }
+.update-status { display: flex; gap: 8px; align-items: center; background: #f7faf9; border: 1px solid #e4eeeb; border-radius: 10px; padding: 9px 10px; margin-top: 12px; font-size: 10px; color: var(--muted); }
+.update-status i { width: 6px; height: 6px; border-radius: 50%; background: #55b99f; flex: 0 0 auto; }
+.warn { border-left: 3px solid var(--coral); background: var(--coral-soft); padding: 10px 12px; border-radius: 0 9px 9px 0; color: #8e3928; font-size: 10.5px; line-height: 1.65; margin-top: 11px; }
+.guide-disclaimer { margin: 13px 0 0; padding: 10px 12px; border-radius: 9px; background: #f6f8f7; border: 1px dashed #d5e1de; color: var(--muted); font-size: 10px; line-height: 1.75; }
+.guide-disclaimer strong { color: var(--ink-2); }
+
+footer { border-top: 1px solid rgba(12,29,46,.08); padding: 26px 0 34px; margin-top: 24px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; color: var(--muted); font-size: 10.5px; line-height: 1.7; }
+.footer-inner b { color: var(--ink-2); }
+.footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-links a:hover { color: var(--teal); }
+
+/* ---------- compare bar ---------- */
+.compare-bar {
+  position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%) translateY(120%);
+  z-index: 55;
+  width: min(760px, calc(100% - 28px));
+  background: rgba(12,29,46,.96);
+  color: #fff; border-radius: 16px;
+  padding: 10px 12px;
+  box-shadow: 0 20px 50px rgba(12,29,46,.3);
+  display: flex; align-items: center; gap: 10px;
+  transition: transform .25s ease;
+  backdrop-filter: blur(16px);
+}
+.compare-bar.show { transform: translateX(-50%) translateY(0); }
+.compare-bar:empty { display: none; }
+.compare-chips { display: flex; gap: 5px; overflow: auto; flex: 1; scrollbar-width: none; }
+.compare-chips::-webkit-scrollbar { display: none; }
+.compare-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px; padding: 5px 7px; font-size: 9px; white-space: nowrap;
+}
+.compare-chip button { border: 0; background: none; color: #b9cbd7; padding: 0; font-size: 11px; }
+.compare-bar .btn { padding: 8px 13px; font-size: 11px; }
+.compare-bar .btn.primary { background: #55d7c0; color: #062e2a; box-shadow: none; }
+.compare-bar .btn.primary:hover { background: #7ce5d2; }
+.compare-clear { border: 0; background: none; color: #9db3c4; font-size: 10px; white-space: nowrap; }
+
+/* ---------- modal ---------- */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(8, 20, 31, .55);
+  backdrop-filter: blur(5px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 22px;
+  opacity: 0; pointer-events: none; transition: .2s;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: auto; }
+.modal {
+  width: min(940px, 100%);
+  max-height: min(88vh, 900px);
+  background: var(--paper);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column;
+  transform: translateY(12px) scale(.99);
+  transition: .22s;
+}
+.modal-backdrop.open .modal { transform: none; }
+.modal.wide { width: min(1160px, 100%); }
+.modal-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
+  padding: 18px 20px 14px;
+  background: #fff; border-bottom: 1px solid var(--line);
+}
+.modal-head .eyebrow { font-size: 9.5px; }
+.modal-head h2 { margin: 5px 0 2px; font-size: 21px; letter-spacing: -.03em; line-height: 1.3; }
+.modal-head p { margin: 0; color: var(--muted); font-size: 11px; }
+.modal-close {
+  border: 1px solid var(--line); background: #fff; width: 32px; height: 32px;
+  border-radius: 9px; font-size: 16px; color: var(--muted); flex: 0 0 auto;
+}
+.modal-close:hover { color: var(--coral); border-color: #f1c1b5; }
+.modal-body { overflow: auto; padding: 18px 20px 22px; }
+.detail-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 14px; }
+.detail-main, .detail-side { display: flex; flex-direction: column; gap: 12px; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 15px; }
+.panel h4 { margin: 0 0 9px; font-size: 11px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 14px; }
+.fact span { display: block; color: var(--muted-2); font-size: 9px; margin-bottom: 1px; }
+.fact b { display: block; font-size: 11.5px; font-weight: 700; color: var(--ink-2); line-height: 1.5; }
+.detail-salary { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.detail-salary strong { color: var(--coral); font-size: 25px; letter-spacing: -.04em; line-height: 1.1; }
+.detail-salary span { color: var(--muted); font-size: 10px; }
+.req-text { color: var(--ink-2); font-size: 11.5px; line-height: 1.85; white-space: pre-line; }
+.req-text strong { color: var(--ink); }
+.benefit-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.benefit { background: #f4f8f7; border: 1px solid #e9f0ee; color: var(--ink-2); border-radius: 5px; padding: 3px 7px; font-size: 9.5px; }
+.contact-panel { background: linear-gradient(150deg, var(--navy), #103b3a); color: #eaf2f6; border: 0; }
+.contact-panel h4 { color: #9db3c4; }
+.contact-person { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+.contact-avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); font-size: 12px; font-weight: 800; }
+.contact-person b { display: block; font-size: 12px; }
+.contact-person span { display: block; color: #9db3c4; font-size: 9.5px; }
+.contact-line { font-size: 10.5px; color: #c4d4df; line-height: 1.7; margin-bottom: 11px; }
+.contact-line strong { color: #fff; }
+.contact-panel .btn { width: 100%; margin-top: 6px; }
+.contact-panel .btn.primary { background: #55d7c0; color: #062e2a; box-shadow: none; }
+.contact-panel .btn.ghost { background: transparent; border-color: rgba(255,255,255,.2); color: #eaf2f6; }
+.source-note { color: var(--muted); font-size: 9.5px; line-height: 1.6; }
+.modal-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 20px; border-top: 1px solid var(--line); background: #fff; }
+.modal-foot .left { display: flex; gap: 7px; flex-wrap: wrap; }
+.modal-foot .right { display: flex; gap: 7px; }
+
+/* compare table */
+.compare-scroll { overflow: auto; }
+.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 760px; }
+.compare-table th, .compare-table td {
+  border-bottom: 1px solid var(--line); padding: 10px 11px; text-align: left; vertical-align: top; font-size: 10.5px; line-height: 1.55;
+}
+.compare-table th { position: sticky; top: 0; background: #fff; z-index: 2; font-size: 10px; color: var(--muted); font-weight: 750; width: 120px; }
+.compare-table td { background: #fff; min-width: 170px; }
+.compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: 0; }
+.compare-table .c-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.compare-table .c-head b { display: block; font-size: 12px; line-height: 1.4; }
+.compare-table .c-head span { color: var(--muted); font-size: 9px; display: block; }
+.compare-table .c-price { color: var(--coral); font-weight: 800; font-size: 12px; }
+.compare-table .c-del { border: 0; background: none; color: var(--muted-2); font-size: 13px; padding: 0; }
+.compare-table .c-del:hover { color: var(--coral); }
+
+/* toast */
+.toast {
+  position: fixed; left: 50%; bottom: 86px; transform: translateX(-50%) translateY(16px);
+  z-index: 80; background: var(--ink); color: #fff;
+  border-radius: 10px; padding: 9px 14px; font-size: 11px; font-weight: 600;
+  box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: .2s;
+  max-width: min(420px, calc(100% - 30px)); text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* mobile filter toggle */
+.mobile-filter-btn { display: none !important; }
+
+@media (max-width: 1120px) {
+  .hero { gap: 28px; grid-template-columns: minmax(0, 1.4fr) minmax(300px, .8fr); }
+  .job-grid { grid-template-columns: 1fr; }
+  .source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .event-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .wrap { width: min(var(--max), calc(100% - 28px)); }
+  .topnav { display: none; }
+  .brand { min-width: 0; }
+  .hero { grid-template-columns: 1fr; padding-top: 34px; gap: 22px; }
+  .hero h1 { font-size: clamp(34px, 9vw, 52px); }
+  .hero-panel { max-width: 520px; }
+  .workspace { grid-template-columns: 1fr; }
+  .filters {
+    position: fixed; inset: 0 0 0 auto; z-index: 50;
+    width: min(330px, 92vw); max-height: none; border-radius: 0;
+    transform: translateX(102%); transition: transform .24s ease;
+    box-shadow: -20px 0 50px rgba(12,29,46,.18);
+    overflow: auto; padding: 20px 18px 80px;
+  }
+  .filters.open { transform: none; }
+  .mobile-filter-btn { display: inline-flex !important; grid-column: 1 / -1; }
+  .filter-backdrop {
+    position: fixed; inset: 0; background: rgba(8,20,31,.4); z-index: 49;
+    opacity: 0; pointer-events: none; transition: .2s;
+  }
+  .filter-backdrop.open { opacity: 1; pointer-events: auto; }
+  .results-head { align-items: flex-start; }
+  .results-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .section-head p { text-align: left; }
+  .job-grid.list .job-card { grid-template-columns: 1fr; }
+  .job-grid.list .meta-grid { grid-column: 1; grid-row: auto; margin: 0 0 9px; }
+  .job-grid.list .desc, .job-grid.list .card-tags, .job-grid.list .card-foot { grid-column: 1; }
+}
+@media (max-width: 560px) {
+  .topbar-inner { height: 60px; gap: 10px; }
+  .brand small { display: none; }
+  .brand strong { font-size: 14px; }
+  .top-actions .icon-text span.label { display: none; }
+  .hero { padding-top: 26px; }
+  .hero h1 { font-size: 36px; }
+  .hero p.lead { font-size: 14px; }
+  .hero-meta { gap: 16px; }
+  .hero-meta b { font-size: 20px; }
+  .event-grid, .source-grid { grid-template-columns: 1fr; }
+  .job-card { padding: 14px; }
+  .job-title { font-size: 15px; }
+  .salary { font-size: 13px; }
+  .meta-grid { gap: 4px 6px; }
+  .card-foot { flex-direction: column; align-items: stretch; }
+  .card-actions { justify-content: flex-end; }
+  .compare-bar { bottom: 10px; padding: 8px; }
+  .compare-bar .btn { padding: 7px 10px; font-size: 10px; }
+  .modal-backdrop { padding: 0; align-items: flex-end; }
+  .modal { border-radius: 20px 20px 0 0; max-height: 94vh; }
+  .modal-head { padding: 15px 15px 12px; }
+  .modal-head h2 { font-size: 18px; }
+  .modal-body { padding: 14px 15px 18px; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .modal-foot { padding: 10px 15px; flex-direction: column; align-items: stretch; }
+  .modal-foot .right { justify-content: flex-end; }
+  .footer-inner { flex-direction: column; }
+  .toast { bottom: 74px; }
+}
+@media print {
+  .topbar, .quick-strip, .filters, .compare-bar, .modal-backdrop, .toast, .card-actions, .fav-btn, .panel-update { display: none !important; }
+  .workspace { display: block; }
+  .job-grid { grid-template-columns: 1fr 1fr; }
+  .job-card { break-inside: avoid; box-shadow: none; }
+  body { background: #fff; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+</style>
 </head>
 <body>
 
@@ -371,7 +1151,3246 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="data/jobs.js"></script>
-<script src="assets/app.js"></script>
+<script>
+window.JOBS_DATA = {
+  "generated_at": "2026-10-26 22:53",
+  "snapshot_date": "2026-10-26",
+  "title": "赣药职通车 · 江西高职药学就业雷达",
+  "subtitle": "上饶卫生健康职业学院 2024 级药学专业（2027 届）",
+  "sources": [
+    {
+      "name": "江西省大学生就业服务平台",
+      "short": "省级就业平台",
+      "desc": "江西省教育评估监测研究院主办，汇聚全省高校双选会、宣讲会与招聘职位；本页大部分岗位来自这里。",
+      "url": "https://employment.jx.smartedu.cn/main/job/search",
+      "tags": [
+        "官方",
+        "岗位主来源",
+        "可投递"
+      ],
+      "featured": true
+    },
+    {
+      "name": "江西中医药大学就业信息网",
+      "short": "江西中医药大学",
+      "desc": "药学院 2027 届实习就业一体化招聘会参会企业多，药学类岗位集中。",
+      "url": "https://jxdxsjy.jx.edu.cn/jxutcm/",
+      "tags": [
+        "高校",
+        "药学强相关"
+      ]
+    },
+    {
+      "name": "南昌医学院就业信息网",
+      "short": "南昌医学院",
+      "desc": "2027 届医学类专场招聘会（11 月 8 日）覆盖医院、药企、医药流通等。",
+      "url": "https://jxdxsjy.jx.edu.cn/ncyxy/",
+      "tags": [
+        "高校",
+        "医学类专场"
+      ]
+    },
+    {
+      "name": "赣南医科大学就业信息网",
+      "short": "赣南医科大学",
+      "desc": "2027 届秋季招聘会（11 月 5 日）113 家企业、2318 个职位，赣州本地岗位多。",
+      "url": "https://jxdxsjy.jx.edu.cn/gmu/",
+      "tags": [
+        "高校",
+        "赣州"
+      ]
+    },
+    {
+      "name": "江西医学高等专科学校就业信息网",
+      "short": "江西医专",
+      "desc": "上饶本地医学类高职院校，岗位与专科药学匹配度高。",
+      "url": "https://jxdxsjy.jx.edu.cn/jxyxgz/",
+      "tags": [
+        "上饶",
+        "高职"
+      ]
+    },
+    {
+      "name": "上饶卫生健康职业学院就业信息网",
+      "short": "上饶卫健职院",
+      "desc": "本校就业信息入口，关注双选会、宣讲会和辅导员通知。",
+      "url": "https://jxdxsjy.jx.edu.cn/srwsjk/",
+      "tags": [
+        "本校",
+        "必看"
+      ]
+    },
+    {
+      "name": "江西人才服务网",
+      "short": "江西人才服务网",
+      "desc": "江西省人力资源市场官方平台，发布省级招聘会、国企/事业单位与人才政策。",
+      "url": "https://www.jxrcfw.com/",
+      "tags": [
+        "官方",
+        "省级"
+      ]
+    },
+    {
+      "name": "南昌市人力资源和社会保障局",
+      "short": "南昌人社",
+      "desc": "事业单位招聘、就业创业政策、公共就业服务入口。",
+      "url": "https://rsj.nc.gov.cn/",
+      "tags": [
+        "官方",
+        "南昌"
+      ]
+    },
+    {
+      "name": "上饶市人力资源和社会保障局",
+      "short": "上饶人社",
+      "desc": "上饶市事业单位招聘、就业之家、高校毕业生就业政策。",
+      "url": "https://www.zgsr.gov.cn/hrss/",
+      "tags": [
+        "官方",
+        "上饶"
+      ]
+    },
+    {
+      "name": "广信区人社局 · 招考录用",
+      "short": "广信区",
+      "desc": "广信区事业单位、编外人员、公益性岗位等公开招聘公告。",
+      "url": "http://www.srx.gov.cn/gxqrsj/zkly/gxzwgk_xxgklist.shtml",
+      "tags": [
+        "官方",
+        "广信区"
+      ]
+    },
+    {
+      "name": "广丰区人社局 · 招考录用",
+      "short": "广丰区",
+      "desc": "广丰区事业单位、国企、就业见习与基层公共服务岗位公告。",
+      "url": "http://www.gfx.gov.cn/qrsj/ZKLYS/zwgk_list.shtml",
+      "tags": [
+        "官方",
+        "广丰区"
+      ]
+    },
+    {
+      "name": "赣州市人力资源和社会保障局",
+      "short": "赣州人社",
+      "desc": "赣州市事业单位招聘、就业创业政策；本地找工作入口为赣州人才热线。",
+      "url": "https://rsj.ganzhou.gov.cn/",
+      "tags": [
+        "官方",
+        "赣州"
+      ]
+    },
+    {
+      "name": "丁香人才",
+      "short": "丁香人才",
+      "desc": "丁香园旗下医疗行业招聘平台，医院药房、临床研究、药企岗位丰富，可按江西筛选。",
+      "url": "https://www.jobmd.cn/",
+      "tags": [
+        "医疗招聘",
+        "全国"
+      ]
+    },
+    {
+      "name": "康强医疗人才网",
+      "short": "康强医疗",
+      "desc": "医院、诊所、药房岗位多，支持在线沟通；本页上饶/赣州本地岗位来自这里。",
+      "url": "https://www.kq36.com/",
+      "tags": [
+        "医疗招聘",
+        "本地岗位"
+      ],
+      "featured": true
+    },
+    {
+      "name": "赣州人才热线",
+      "short": "赣州人才热线",
+      "desc": "赣州市官方公共招聘平台，可查本地企业岗位与招聘会。",
+      "url": "https://www.gzrcrx.com/",
+      "tags": [
+        "官方",
+        "赣州"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "fair-64696",
+      "title": "赣南医科大学 2027 届毕业生秋季招聘会",
+      "date": "2026-11-05",
+      "time": "09:00-18:00",
+      "city": "赣州市",
+      "location": "赣南医科大学蓉江校区",
+      "companies": 113,
+      "positions": 2318,
+      "link": "https://employment.jx.smartedu.cn/main/jobfair91/view?id=64696",
+      "source": "江西省大学生就业服务平台",
+      "note": "医学类岗位集中，赣州及周边医院、药企多；建议提前筛选参会企业。",
+      "status": "upcoming"
+    },
+    {
+      "id": "fair-64969",
+      "title": "江西省 2027 届高校毕业生医学类（南昌医学院）专场就业招聘会",
+      "date": "2026-11-08",
+      "time": "09:00-12:00",
+      "city": "南昌市",
+      "location": "南昌医学院（九龙湖校区）田径场",
+      "companies": 50,
+      "positions": 1968,
+      "link": "https://employment.jx.smartedu.cn/main/jobfair91/view?id=64969",
+      "source": "江西省大学生就业服务平台",
+      "note": "省级医学类专场，含医院、药企、医药流通、零售连锁；带好简历，现场可直投。",
+      "status": "upcoming"
+    },
+    {
+      "id": "fair-64374",
+      "title": "江西中医药大学药学院 2027 届实习就业一体化招聘会",
+      "date": "2026-09-19",
+      "time": "09:00-12:30",
+      "city": "南昌市",
+      "location": "江西中医药大学（湾里校区）",
+      "companies": 60,
+      "positions": 1498,
+      "link": "https://employment.jx.smartedu.cn/main/jobfair91/view?id=64374",
+      "source": "江西省大学生就业服务平台",
+      "note": "已举办，但参会企业与职位仍可在线查看，是药学类岗位的重要线索库。",
+      "status": "past"
+    }
+  ],
+  "stats": {
+    "total": 40,
+    "local": 7,
+    "guangxin": 2,
+    "guangfeng": 1,
+    "intern": 12,
+    "fresh": 35,
+    "no_cert": 35,
+    "platform": 32,
+    "kq": 8
+  },
+  "jobs": [
+    {
+      "id": "kq-3727666",
+      "title": "药工/药士",
+      "company": "邦尔骨科医院集团股份有限公司（广丰院区）",
+      "salary_text": "3K～5K",
+      "salary_min": 3000,
+      "salary_max": 5000,
+      "salary_band": "3-4千",
+      "location": "上饶市广丰区",
+      "city": "上饶市",
+      "district": "广丰区",
+      "address": "江西省上饶市广丰区芦林街道芦林大道200号",
+      "education": "中专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "1年以上",
+      "freshness": "需1年经验",
+      "fresh_friendly": false,
+      "headcount": "若干",
+      "work_time": "08:00-17:00，月休4天，值班制",
+      "posted_at": "2026-10-26",
+      "requirements": "负责住院部及门诊中西药品调配；要求中药士职称。福利：五险一金、餐补、包住、节日福利、带薪年假。",
+      "description": "负责住院部及门诊中西药品调配；要求中药士职称。福利：五险一金、餐补、包住、节日福利、带薪年假。",
+      "short_desc": "负责住院部及门诊中西药品调配；要求中药士职称。福利：五险一金、餐补、包住、节日福利、带薪年假。",
+      "tags": [
+        "五险一金",
+        "包住",
+        "餐补",
+        "节日福利",
+        "带薪年假",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "500人以上",
+      "contact_name": "李女士",
+      "contact_role": "人事",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/3727666",
+      "url": "https://www.kq36.com/job/3727666",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": true,
+      "cert_preferred": false,
+      "cert_note": "需中药士职称",
+      "is_local": true,
+      "is_guangxin": false,
+      "is_guangfeng": true
+    },
+    {
+      "id": "kq-3780857",
+      "title": "药工/药士、药剂师",
+      "company": "铅山爱康中医院",
+      "salary_text": "3K～4K",
+      "salary_min": 3000,
+      "salary_max": 4000,
+      "salary_band": "3-4千",
+      "location": "上饶市铅山县",
+      "city": "上饶市",
+      "district": "铅山县",
+      "address": "江西省上饶市铅山县永平镇永平路3号",
+      "education": "大专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "1年以上",
+      "freshness": "需1年经验",
+      "fresh_friendly": false,
+      "headcount": "若干",
+      "work_time": "需参与值班，周休1天",
+      "posted_at": "2026-10-25",
+      "requirements": "日常药房工作；要求有中药剂士证以上职称；需参与值班。福利：五险、包吃住。",
+      "description": "日常药房工作；要求有中药剂士证以上职称；需参与值班。福利：五险、包吃住。",
+      "short_desc": "日常药房工作；要求有中药剂士证以上职称；需参与值班。福利：五险、包吃住。",
+      "tags": [
+        "五险",
+        "包吃住",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "杨院长",
+      "contact_role": "院长",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/3780857",
+      "url": "https://www.kq36.com/job/3780857",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": true,
+      "cert_preferred": false,
+      "cert_note": "需中药剂士证以上",
+      "is_local": true,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-999778",
+      "title": "药剂人员",
+      "company": "鄱阳县港头医院",
+      "salary_text": "2K～5K",
+      "salary_min": 2000,
+      "salary_max": 5000,
+      "salary_band": "2千以下",
+      "location": "上饶市鄱阳县",
+      "city": "上饶市",
+      "district": "鄱阳县",
+      "address": "江西省上饶市鄱阳县油墩街镇龙尾村委会胡家组东面",
+      "education": "中专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "work_time": "08:00-17:30，周休1天",
+      "posted_at": "2026-10-16",
+      "requirements": "药剂相关专业毕业，工作兢兢业业、仔细认真、责任心强；取得药剂士证者从优。接收应届生。",
+      "description": "药剂相关专业毕业，工作兢兢业业、仔细认真、责任心强；取得药剂士证者从优。接收应届生。",
+      "short_desc": "药剂相关专业毕业，工作兢兢业业、仔细认真、责任心强；取得药剂士证者从优。接收应届生。",
+      "tags": [
+        "包吃住",
+        "五险",
+        "绩效奖金",
+        "班车",
+        "员工旅游",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "盛先生",
+      "contact_role": "主任",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/999778",
+      "url": "https://www.kq36.com/job/999778",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有药剂士证者从优",
+      "is_local": true,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-2615602",
+      "title": "药工/药剂士",
+      "company": "余干庆云堂医院",
+      "salary_text": "3K～6K",
+      "salary_min": 3000,
+      "salary_max": 6000,
+      "salary_band": "3-4千",
+      "location": "上饶市余干县",
+      "city": "上饶市",
+      "district": "余干县",
+      "address": "江西省上饶市余干县玉亭镇世纪大道52号",
+      "education": "大专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "1年以上",
+      "freshness": "需1年经验",
+      "fresh_friendly": false,
+      "headcount": "若干",
+      "work_time": "08:00-17:30，周休1天",
+      "posted_at": "2026-10-15",
+      "requirements": "取得药士证，有医院药房工作经验；熟悉药房相关流程、处方点评；为人和善、善于沟通、诚实守信。",
+      "description": "取得药士证，有医院药房工作经验；熟悉药房相关流程、处方点评；为人和善、善于沟通、诚实守信。",
+      "short_desc": "取得药士证，有医院药房工作经验；熟悉药房相关流程、处方点评；为人和善、善于沟通、诚实守信。",
+      "tags": [
+        "五险",
+        "包住",
+        "餐补",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "101-500人",
+      "contact_name": "张主任",
+      "contact_role": "人事主管",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/2615602",
+      "url": "https://www.kq36.com/job/2615602",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": true,
+      "cert_preferred": false,
+      "cert_note": "需取得药士证",
+      "is_local": true,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-215168",
+      "title": "药剂师",
+      "company": "上饶市健愉大药房",
+      "salary_text": "面议",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_band": "面议",
+      "location": "上饶市",
+      "city": "上饶市",
+      "district": "上饶市区",
+      "address": "",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-09-11",
+      "requirements": "药剂师",
+      "description": "药剂师",
+      "short_desc": "药剂师",
+      "tags": [],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "俞少云",
+      "contact_role": "",
+      "phone": "151****0089（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=215168",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=215168",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": true,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-4111959",
+      "title": "药士",
+      "company": "上饶广信中山医院",
+      "salary_text": "2K～4K",
+      "salary_min": 2000,
+      "salary_max": 4000,
+      "salary_band": "2千以下",
+      "location": "上饶市广信区",
+      "city": "上饶市",
+      "district": "广信区",
+      "address": "江西省上饶市广信区（上饶市人民医院医联体中山分院）",
+      "education": "中专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "1年以上",
+      "freshness": "需1年经验",
+      "fresh_friendly": false,
+      "headcount": "若干",
+      "work_time": "以医院排班为准",
+      "posted_at": "2026-09-09",
+      "requirements": "熟悉常用药品的基本性质及配伍原则；具备基本医药学理论知识，能执行药房各项操作流程；工作细致严谨、责任心强，有良好沟通能力和服务意识。",
+      "description": "熟悉常用药品的基本性质及配伍原则；具备基本医药学理论知识，能执行药房各项操作流程；工作细致严谨、责任心强，有良好沟通能力和服务意识。",
+      "short_desc": "熟悉常用药品的基本性质及配伍原则；具备基本医药学理论知识，能执行药房各项操作流程；工作细致严谨、责任心强，有良好沟通能力和服务意识。",
+      "tags": [
+        "在线沟通",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "聂兴华",
+      "contact_role": "负责人",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/4111959",
+      "url": "https://www.kq36.com/job/4111959",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有药士证者优先",
+      "is_local": true,
+      "is_guangxin": true,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-1244305",
+      "title": "药库管理",
+      "company": "上饶广信仁泽医院",
+      "salary_text": "2K～4K",
+      "salary_min": 2000,
+      "salary_max": 4000,
+      "salary_band": "2千以下",
+      "location": "上饶市广信区",
+      "city": "上饶市",
+      "district": "广信区",
+      "address": "江西省上饶市广信区煌固镇后田村",
+      "education": "中专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "work_time": "周休2天，具体班次面议",
+      "posted_at": "2026-08-21",
+      "requirements": "熟练电脑操作，责任心强，有团队精神，能吃苦耐劳、有上进心；有财务专业、药剂士（师）资格证者优先。",
+      "description": "熟练电脑操作，责任心强，有团队精神，能吃苦耐劳、有上进心；有财务专业、药剂士（师）资格证者优先。",
+      "short_desc": "熟练电脑操作，责任心强，有团队精神，能吃苦耐劳、有上进心；有财务专业、药剂士（师）资格证者优先。",
+      "tags": [
+        "包住",
+        "周休2天",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "徐院长",
+      "contact_role": "主任",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/1244305",
+      "url": "https://www.kq36.com/job/1244305",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有药剂士（师）证者优先",
+      "is_local": true,
+      "is_guangxin": true,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177302",
+      "title": "药品质量管理员",
+      "company": "南昌穆拉德生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "国贸广场A座1106",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-10-24",
+      "requirements": "技术精湛，有管理能力",
+      "description": "技术精湛，有管理能力",
+      "short_desc": "技术精湛，有管理能力",
+      "tags": [
+        "有提成",
+        "年终奖",
+        "晋升快",
+        "有补助",
+        "交通方便",
+        "包食宿"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7642（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177302",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177302",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177300",
+      "title": "药品管理文员",
+      "company": "南昌穆拉德生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "国贸广场A座1106",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-10-24",
+      "requirements": "爱学习，思考敏捷",
+      "description": "爱学习，思考敏捷",
+      "short_desc": "爱学习，思考敏捷",
+      "tags": [
+        "有提成",
+        "年终奖",
+        "晋升快",
+        "有补助",
+        "交通方便",
+        "包食宿"
+      ],
+      "category": "其他医药",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7642（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177300",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177300",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177231",
+      "title": "医药市场销售实习生",
+      "company": "南昌穆拉德生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "国贸广场A座1106",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "1人",
+      "posted_at": "2026-10-24",
+      "requirements": "爱学习，吃苦耐劳",
+      "description": "爱学习，吃苦耐劳",
+      "short_desc": "爱学习，吃苦耐劳",
+      "tags": [
+        "有提成",
+        "年终奖",
+        "晋升快",
+        "有补助",
+        "交通方便",
+        "包食宿"
+      ],
+      "category": "医药销售",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7642（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177231",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177231",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177305",
+      "title": "特约营业员",
+      "company": "南昌穆拉德生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "国贸广场A座1106",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "1人",
+      "posted_at": "2026-10-24",
+      "requirements": "思维灵活，气质佳",
+      "description": "思维灵活，气质佳",
+      "short_desc": "思维灵活，气质佳",
+      "tags": [
+        "有提成",
+        "年终奖",
+        "晋升快",
+        "有补助",
+        "交通方便",
+        "包食宿"
+      ],
+      "category": "医药销售",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7642（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177305",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177305",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-225501",
+      "title": "采购专员",
+      "company": "江西九州通药业有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "青云谱区",
+      "address": "江西省南昌市青云谱区金鹰路9号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-10-21",
+      "requirements": "好药师大药房，地点：南昌要求：有采购经验，药学专业，35岁以下",
+      "description": "好药师大药房，地点：南昌要求：有采购经验，药学专业，35岁以下",
+      "short_desc": "好药师大药房，地点：南昌要求：有采购经验，药学专业，35岁以下",
+      "tags": [
+        "有提成",
+        "车贴",
+        "晋升快",
+        "有补助",
+        "全勤奖",
+        "环境好",
+        "包食宿",
+        "双休"
+      ],
+      "category": "医药流通",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "150-500人",
+      "contact_name": "程剑波",
+      "contact_role": "",
+      "phone": "189****1902（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=225501",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=225501",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-224943",
+      "title": "药店营业员",
+      "company": "江西浩心大药房连锁有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "经开区",
+      "address": "江西省南昌市新建区经开区宏图大道58号工控云创产业园3栋101",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-10-21",
+      "requirements": "1、负责药店日常运营管理工作，确保服务流程规范有序；2、接待到店顾客，耐心询问顾客症状与需求，合规为顾客推荐对症药品，做好用药指导、用法用量、禁忌及注意事项讲解，保障顾客用药安全。3、组织药品的陈列、库存管理及盘点工作，保障药品供应与安全。4、做好药品效期管理、缺货登记、退换货登记，配合店长完成门店日常运营、盘点、合规检查等各项工作。",
+      "description": "1、负责药店日常运营管理工作，确保服务流程规范有序；\n2、接待到店顾客，耐心询问顾客症状与需求，合规为顾客推荐对症药品，做好用药指导、用法用量、禁忌及注意事项讲解，保障顾客用药安全。\n3、组织药品的陈列、库存管理及盘点工作，保障药品供应与安全。\n4、做好药品效期管理、缺货登记、退换货登记，配合店长完成门店日常运营、盘点、合规检查等各项工作。",
+      "short_desc": "1、负责药店日常运营管理工作，确保服务流程规范有序；2、接待到店顾客，耐心询问顾客症状与需求，合规为顾客推荐对症药品，做好用药指导、用法用量、禁忌及注意事项讲解，保障顾客用药安全。3、组织药品的陈列、库存管理及盘点工作，保障药品供应与安全。",
+      "tags": [
+        "环境好",
+        "管理规范",
+        "有提成"
+      ],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "150-500人",
+      "contact_name": "王雪",
+      "contact_role": "",
+      "phone": "188****0999（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=224943",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=224943",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-225511",
+      "title": "生产技术工程师",
+      "company": "江西脑虎科技有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "江西省南昌市新建区",
+      "city": "南昌市",
+      "district": "新建区",
+      "address": "江西省南昌市新建区赣江新区直管区南昌中小微企业创业孵化基地2期1-2#楼第一层脑虎科技",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "posted_at": "2026-10-21",
+      "requirements": "",
+      "description": "主要负责工作：\n1. 根据生产计划，严格按照产品bom单制备生产领料单领用原料，确保生产物料正确，节约成本，杜绝浪费；\n2. 按照作业指导书和生产过程控制文件，配制中间品，并做好生产过程记录文件，并协助质检员完成中间品质检工作，确保所生产的中间品质量合格；\n3. 根据生产设施控制程序，负责本岗位仪器设备的保管.正确使用及定期维护，按要求填写设备使用记录及维护记录。对故障仪器设备进行保修及跟踪；\n4. 按照制作工艺.操作说明做好安全防护，杜绝意外事故发生；\n5. 根据生产作业环境和产品清洁控制程序要求，负责生产区域的环境温湿度记录和环境卫生的维护。\n岗位要求：\n1. 优先机械、材料相关理工类，以及生物医学类专业；接受应届本科毕业生；\n2. 具备高度的主观能动性、良好的团队合作精神；\n3. 工作细心，动手能力强。",
+      "short_desc": "主要负责工作：\n1. 根据生产计划，严格按照产品bom单制备生产领料单领用原料，确保生产物料正确，节约成本，杜绝浪费；\n2. 按照作业指导书和生产过程控制文件，配制中间品，并做好生产过程记录文件，并协助质检员完成中间品质检工作，确保所生产的",
+      "tags": [],
+      "category": "医疗器械",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "",
+      "contact_name": "陈坤",
+      "contact_role": "",
+      "phone": "188****1591（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=225511",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=225511",
+      "source": "江西省大学生就业服务平台 · 2027届招聘会",
+      "source_short": "省级招聘会",
+      "source_type": "校园招聘会",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有证书者优先",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-225091",
+      "title": "QC（品质控制）",
+      "company": "江西远东药业股份有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "江西省贵溪市",
+      "city": "鹰潭市",
+      "district": "贵溪市",
+      "address": "江西省鹰潭市贵溪市经济开发区320国道17号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "posted_at": "2026-10-20",
+      "requirements": "",
+      "description": "对中药口服液体生产过程中的原辅料等进行监测与管理，同时进行数据分析，出具相应报告",
+      "short_desc": "对中药口服液体生产过程中的原辅料等进行监测与管理，同时进行数据分析，出具相应报告",
+      "tags": [],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "",
+      "contact_name": "黄冬梅",
+      "contact_role": "",
+      "phone": "0701-3****666（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=225091",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=225091",
+      "source": "江西省大学生就业服务平台 · 2027届招聘会",
+      "source_short": "省级招聘会",
+      "source_type": "校园招聘会",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-225099",
+      "title": "QA（品质保证）",
+      "company": "江西远东药业股份有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "江西省贵溪市",
+      "city": "鹰潭市",
+      "district": "贵溪市",
+      "address": "江西省鹰潭市贵溪市经济开发区320国道17号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "posted_at": "2026-10-20",
+      "requirements": "",
+      "description": "负责公司质量体系维护，落实GMP规范，质量文件编制、修订、发放、归档管理。\n开展生产现场质量巡查，监督个岗位按规程操作，发现偏差组织调查、跟进整改。\n负责变更、偏差、CAPA、OOS/OOT等质量事件的管理与追踪。\n配合药监部门飞检、内审、客户审计，准备审计资料，跟进不符合项整改。",
+      "short_desc": "负责公司质量体系维护，落实GMP规范，质量文件编制、修订、发放、归档管理。\n开展生产现场质量巡查，监督个岗位按规程操作，发现偏差组织调查、跟进整改。\n负责变更、偏差、CAPA、OOS/OOT等质量事件的管理与追踪。\n配合药监部门飞检、内审、",
+      "tags": [],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "",
+      "contact_name": "黄冬梅",
+      "contact_role": "",
+      "phone": "0701-3****666（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=225099",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=225099",
+      "source": "江西省大学生就业服务平台 · 2027届招聘会",
+      "source_short": "省级招聘会",
+      "source_type": "校园招聘会",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-179815",
+      "title": "检测技术员",
+      "company": "杭州奥泰生物技术股份有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "浙江省杭州市",
+      "city": "浙江省杭州市",
+      "district": "",
+      "address": "钱塘区乔新路383号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "应届可投",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "posted_at": "2026-10-20",
+      "requirements": "",
+      "description": "【任职要求】：\n1、医药类等专业；\n2、在校学习、社会实践表现良好3、有较强的沟通能力，协调能力，团队精神，责任心强，能吃苦耐劳。\n4、本岗位作为公司重点培养对象，意向在杭州长期发展，稳定，上进，肯学，不怕苦\n【工作时间】长白班，没有夜班，坐岗\n【薪资待遇】基本底薪+全勤+加班费+其他奖金（折算小时18元每小时），月薪：4500-5500免费工作餐2餐，免费住宿4人间，空调热水器独立卫生间齐全，每月10号发工资\n【工作地址】浙江杭州",
+      "short_desc": "【任职要求】：\n1、医药类等专业；\n2、在校学习、社会实践表现良好3、有较强的沟通能力，协调能力，团队精神，责任心强，能吃苦耐劳。\n4、本岗位作为公司重点培养对象，意向在杭州长期发展，稳定，上进，肯学，不怕苦\n【工作时间】长白班，没有夜班，",
+      "tags": [],
+      "category": "其他医药",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "",
+      "contact_name": "周丽霞",
+      "contact_role": "",
+      "phone": "0571-5****850（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=179815",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=179815",
+      "source": "江西省大学生就业服务平台 · 2027届招聘会",
+      "source_short": "省级招聘会",
+      "source_type": "校园招聘会",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-224955",
+      "title": "药店店长",
+      "company": "江西浩心大药房连锁有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "经开区",
+      "address": "江西省南昌市新建区经开区宏图大道58号工控云创产业园3栋101",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-10-19",
+      "requirements": "1、全面负责药店日常经营、人员管理、销售管理、库存管理及服务管理，统筹门店整体运营工作，确保门店正常、合规、高效经营;2、负责门店员工排班、考勤、绩效考核、日常督导、技能培训及心态管理，搭建稳定、专业、服务型的门店团队；3、严格执行药品GSP管理规范、医保政策及药监部门相关规定，做好药品验收、陈列、养护、效期管理、温湿度登记、票据管理、台账管理，杜绝违规经营、过期药品、不合规陈列等问题；4、负责门...",
+      "description": "1、全面负责药店日常经营、人员管理、销售管理、库存管理及服务管理，统筹门店整体运营工作，确保门店正常、合规、高效经营;\n2、负责门店员工排班、考勤、绩效考核、日常督导、技能培训及心态管理，搭建稳定、专业、服务型的门店团队；\n3、严格执行药品GSP管理规范、医保政策及药监部门相关规定，做好药品验收、陈列、养护、效期管理、温湿度登记、票据管理、台账管理，杜绝违规经营、过期药品、不合规陈列等问题；\n4、负责门店商品订货、补货、退换货、报损、盘点工作，把控库存结构，优化滞销、临期商品处理，降低库存损耗，保证账实相符；\n5、带领团队执行各项规章制度，提升门店服务质量与运营效率。",
+      "short_desc": "1、全面负责药店日常经营、人员管理、销售管理、库存管理及服务管理，统筹门店整体运营工作，确保门店正常、合规、高效经营;2、负责门店员工排班、考勤、绩效考核、日常督导、技能培训及心态管理，搭建稳定、专业、服务型的门店团队；3、严格执行药品GS",
+      "tags": [
+        "环境好",
+        "管理规范",
+        "有提成",
+        "绩效奖金",
+        "技术培训"
+      ],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "150-500人",
+      "contact_name": "王雪",
+      "contact_role": "",
+      "phone": "188****0999（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=224955",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=224955",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-224622",
+      "title": "药学管理专员",
+      "company": "金粤药业(江西)有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "吉安市",
+      "city": "吉安市",
+      "district": "",
+      "address": "遂川工业园区",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "3人",
+      "posted_at": "2026-10-19",
+      "requirements": "掌握药学基础知识，遵纪守法，勤快好学",
+      "description": "掌握药学基础知识，遵纪守法，勤快好学",
+      "short_desc": "掌握药学基础知识，遵纪守法，勤快好学",
+      "tags": [
+        "有提成",
+        "技术培训",
+        "压力小",
+        "晋升快",
+        "有补助",
+        "环境好",
+        "管理规范",
+        "包食宿"
+      ],
+      "category": "制药企业",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "王林",
+      "contact_role": "",
+      "phone": "137****1678（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=224622",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=224622",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177312",
+      "title": "药品质量管理员",
+      "company": "南昌玖派生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "江西省南昌市南昌经济技术开发区江西农业大学西区新集9栋2单元301室",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "1人",
+      "posted_at": "2026-10-19",
+      "requirements": "工作一丝不苟，认真",
+      "description": "工作一丝不苟，认真",
+      "short_desc": "工作一丝不苟，认真",
+      "tags": [
+        "有提成",
+        "旅游",
+        "技术培训",
+        "有补助",
+        "年终奖",
+        "交通方便",
+        "环境好",
+        "管理规范"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7930（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177312",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177312",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-177311",
+      "title": "药品管理文员",
+      "company": "南昌玖派生物科技有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "江西省南昌市南昌经济技术开发区江西农业大学西区新集9栋2单元301室",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-10-19",
+      "requirements": "形象得体，有亲和力",
+      "description": "形象得体，有亲和力",
+      "short_desc": "形象得体，有亲和力",
+      "tags": [
+        "有提成",
+        "旅游",
+        "技术培训",
+        "有补助",
+        "年终奖",
+        "交通方便",
+        "环境好",
+        "管理规范"
+      ],
+      "category": "其他医药",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "庄新鹏",
+      "contact_role": "",
+      "phone": "136****7930（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=177311",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=177311",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-3491745",
+      "title": "药剂师",
+      "company": "赣州康林杨医院",
+      "salary_text": "3K～5K",
+      "salary_min": 3000,
+      "salary_max": 5000,
+      "salary_band": "3-4千",
+      "location": "赣州市章贡区",
+      "city": "赣州市",
+      "district": "章贡区",
+      "address": "江西省赣州市章贡区湖边镇涌泉寺（经开区湖边镇敬老院）",
+      "education": "中专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "work_time": "以医院排班为准",
+      "posted_at": "2026-10-18",
+      "requirements": "药学相关专业中专及以上；持有药士资格证；熟悉精神科药物及其管理，有医院药房经验者优先；兼收费、医保、出入院办理。接收应届生。",
+      "description": "药学相关专业中专及以上；持有药士资格证；熟悉精神科药物及其管理，有医院药房经验者优先；兼收费、医保、出入院办理。接收应届生。",
+      "short_desc": "药学相关专业中专及以上；持有药士资格证；熟悉精神科药物及其管理，有医院药房经验者优先；兼收费、医保、出入院办理。接收应届生。",
+      "tags": [
+        "五险",
+        "包吃住",
+        "医院药房"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "李主任",
+      "contact_role": "科主任",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/3491745",
+      "url": "https://www.kq36.com/job/3491745",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": true,
+      "cert_preferred": false,
+      "cert_note": "需持有药士资格证",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-223845",
+      "title": "药品管理专员",
+      "company": "金舟药业（江西）有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "吉安市",
+      "city": "吉安市",
+      "district": "",
+      "address": "遂川云岭工业园区",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "3人",
+      "posted_at": "2026-10-15",
+      "requirements": "具备药学专业知识",
+      "description": "具备药学专业知识",
+      "short_desc": "具备药学专业知识",
+      "tags": [
+        "技术培训",
+        "环境好",
+        "管理规范",
+        "包食宿",
+        "加班补助",
+        "五险一金",
+        "有提成",
+        "压力小"
+      ],
+      "category": "制药企业",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "王林",
+      "contact_role": "",
+      "phone": "137****1678（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=223845",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=223845",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-221932",
+      "title": "生产部操作工",
+      "company": "江西迪赛诺制药有限公司",
+      "salary_text": "5500-6499",
+      "salary_min": 5500,
+      "salary_max": 6499,
+      "salary_band": "5-6千",
+      "location": "宜春市",
+      "city": "宜春市",
+      "district": "",
+      "address": "江西省樟树市盐化工业基地",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "5人",
+      "posted_at": "2026-10-14",
+      "requirements": "工作内容：1.负责对所在楼层进行巡检，有无跑冒滴漏事项。2.对生产现场卫生进行清洁。3.按计划对产品进行生产。4.两班倒。任职要求：大专及以上学历，应用化学、制药工程、化学工程与工艺等相关专业，应届生均可，能吃苦耐劳。",
+      "description": "工作内容：\n1.负责对所在楼层进行巡检，有无跑冒滴漏事项。\n2.对生产现场卫生进行清洁。\n3.按计划对产品进行生产。\n4.两班倒。\n任职要求：\n大专及以上学历，应用化学、制药工程、化学工程与工艺等相关专业，应届生均可，能吃苦耐劳。",
+      "short_desc": "工作内容：1.负责对所在楼层进行巡检，有无跑冒滴漏事项。2.对生产现场卫生进行清洁。3.按计划对产品进行生产。4.两班倒。任职要求：大专及以上学历，应用化学、制药工程、化学工程与工艺等相关专业，应届生均可，能吃苦耐劳。",
+      "tags": [
+        "五险一金",
+        "交通方便",
+        "包食宿",
+        "加班费",
+        "专车接送"
+      ],
+      "category": "药品生产",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "150-500人",
+      "contact_name": "鲁先生",
+      "contact_role": "",
+      "phone": "191****3736（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=221932",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=221932",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-222880",
+      "title": "DTP储备干部",
+      "company": "江西汇仁堂药品连锁股份有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "南昌市瑶湖西七路汇仁堂医药产业园",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-10-13",
+      "requirements": "需求专业：药学/中药学/市场营销及相关专业岗位职责：1.负责DTP（新特药服务中心）特药销售、信息登记以及冷链药品的配送；2.负责患者档案建立、回访、教育等，为患者提供专业、周到的药事服务；3.严格执行GSP质量要求与DTP药房管理的各项管理制度。岗位要求：1、专科以上学历，男女不限；2、性格外向，吃苦耐劳",
+      "description": "需求专业：\n药学/中药学/市场营销及相关专业岗位职责：\n1.负责DTP（新特药服务中心）特药销售、信息登记以及冷链药品的配送；\n2.负责患者档案建立、回访、教育等，为患者提供专业、周到的药事服务；\n3.严格执行GSP质量要求与DTP药房管理的各项管理制度。\n岗位要求：\n1、专科以上学历，男女不限；\n2、性格外向，吃苦耐劳",
+      "short_desc": "需求专业：药学/中药学/市场营销及相关专业岗位职责：1.负责DTP（新特药服务中心）特药销售、信息登记以及冷链药品的配送；2.负责患者档案建立、回访、教育等，为患者提供专业、周到的药事服务；3.严格执行GSP质量要求与DTP药房管理的各项管",
+      "tags": [
+        "有提成",
+        "压力小",
+        "晋升快"
+      ],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "1000-5000人",
+      "contact_name": "舒建才",
+      "contact_role": "",
+      "phone": "135****5285（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=222880",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=222880",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-222878",
+      "title": "门店储备干部岗",
+      "company": "江西汇仁堂药品连锁股份有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "南昌市瑶湖西七路汇仁堂医药产业园",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-10-13",
+      "requirements": "需求专业：药学/中药学/市场营销及相关专业岗位职责:1、协助店长管理店面日常及销售管理工作，达成店面销售目标；2、负责客户引导、药品销售、货品陈列、药事服务、门店收银等。岗位要求:1、专科及以上学历，男女不限；2、性格外向，吃苦耐劳",
+      "description": "需求专业：\n药学/中药学/市场营销及相关专业岗位职责:\n1、协助店长管理店面日常及销售管理工作，达成店面销售目标；\n2、负责客户引导、药品销售、货品陈列、药事服务、门店收银等。\n岗位要求:\n1、专科及以上学历，男女不限；\n2、性格外向，吃苦耐劳",
+      "short_desc": "需求专业：药学/中药学/市场营销及相关专业岗位职责:1、协助店长管理店面日常及销售管理工作，达成店面销售目标；2、负责客户引导、药品销售、货品陈列、药事服务、门店收银等。岗位要求:1、专科及以上学历，男女不限；2、性格外向，吃苦耐劳",
+      "tags": [
+        "有提成",
+        "压力小",
+        "晋升快"
+      ],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "1000-5000人",
+      "contact_name": "舒建才",
+      "contact_role": "",
+      "phone": "135****5285（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=222878",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=222878",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-220072",
+      "title": "药品采购员",
+      "company": "江西龙开河医药科技集团股份有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "九江市",
+      "city": "九江市",
+      "district": "",
+      "address": "江西省九江市浔阳区城东工业基地3号地B5地块办公楼（1号楼1",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-10-08",
+      "requirements": "药品采购",
+      "description": "药品采购",
+      "short_desc": "药品采购",
+      "tags": [
+        "包食宿",
+        "管理规范",
+        "有提成",
+        "旅游",
+        "晋升快"
+      ],
+      "category": "医药流通",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "杨梦云",
+      "contact_role": "",
+      "phone": "0792-7****390（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=220072",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=220072",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-220069",
+      "title": "药品质检员",
+      "company": "江西龙开河医药科技集团股份有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "九江市",
+      "city": "九江市",
+      "district": "",
+      "address": "江西省九江市浔阳区城东工业基地3号地B5地块办公楼（1号楼1",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-10-08",
+      "requirements": "药品质检",
+      "description": "药品质检",
+      "short_desc": "药品质检",
+      "tags": [
+        "包食宿",
+        "管理规范",
+        "有提成",
+        "旅游",
+        "晋升快"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "杨梦云",
+      "contact_role": "",
+      "phone": "0792-7****390（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=220069",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=220069",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-220067",
+      "title": "中药调剂员",
+      "company": "江西龙开河医药科技集团股份有限公司",
+      "salary_text": "2500-3499",
+      "salary_min": 2500,
+      "salary_max": 3499,
+      "salary_band": "2-3千",
+      "location": "九江市",
+      "city": "九江市",
+      "district": "",
+      "address": "江西省九江市浔阳区城东工业基地3号地B5地块办公楼（1号楼1",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "6人",
+      "posted_at": "2026-10-08",
+      "requirements": "中药处方调剂",
+      "description": "中药处方调剂",
+      "short_desc": "中药处方调剂",
+      "tags": [
+        "包食宿",
+        "管理规范",
+        "有提成",
+        "旅游",
+        "晋升快"
+      ],
+      "category": "制药企业",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "杨梦云",
+      "contact_role": "",
+      "phone": "0792-7****390（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=220067",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=220067",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-219378",
+      "title": "临床协调员CRC Clinical Research Coordinator",
+      "company": "康龙化成（北京）新药技术股份有限公司",
+      "salary_text": "2500-3499",
+      "salary_min": 2500,
+      "salary_max": 3499,
+      "salary_band": "2-3千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "",
+      "address": "南昌大学第一附属医院、江西省肿瘤医院、南昌大学第二附属医院等",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "500人",
+      "posted_at": "2026-09-29",
+      "requirements": "岗位职责根据GCP和研究方案要求，协助研究者完成各项工作：1、协助研究者完成伦理资料递交、药理机构备案及合同签署等工作，协助及时完成SAE及SUSAR等相关安全报告2、协助研究者完成试验各个阶段研究中心的文档收集、整理、归档3、协助研究者完成受试者管理工作，包括受试者招募、筛选潜在的受试者、安排受试者访视、安排实验室各项检查、获取检查结果等4、协助研究者完成试验标本的处理、保存和运送工作5、协助研...",
+      "description": "岗位职责根据GCP和研究方案要求，协助研究者完成各项工作：\n1、协助研究者完成伦理资料递交、药理机构备案及合同签署等工作，协助及时完成SAE及SUSAR等相关安全报告2、协助研究者完成试验各个阶段研究中心的文档收集、整理、归档3、协助研究者完成受试者管理工作，包括受试者招募、筛选潜在的受试者、安排受试者访视、安排实验室各项检查、获取检查结果等4、协助研究者完成试验标本的处理、保存和运送工作5、协助研究者完成临床研究药物及其相关物资的管理和计数，包括药物及其相关物资的接收、保存、分发、回收和归还，并完成相关记录6、在研究者授权下协助研究者填写病例报告表及差异解决（需要进行医学判断的除外）\n7、协调CRA的中心访视工作，提前准备各种文档供CRA监查8、按照试验计划与中心人员及申办方等进行全面的沟通（邮件、口头、传真）并记录9、协助研究者完成临床试验的其他相关工作任职要求1、2027届毕业生，护理学、医学、药学等医药类相关专业，专科及以上学历2、具备清晰的书面与口头表达能力，善于沟通3、抗压能力强，责任心强，积极主动，做事认真严谨、有条理4、熟练使用Office等办公软件5、CET-4及以上者优先6、每周可实习3-5个工作日，实习期表现优秀可转正简历投递方式：邮箱投递：hr-campus@pharmaron-bj.cn\n招聘区域（具体招聘城市以官网为准）\n省份城市北京北京天津天津上海上海重庆重庆河北石家庄、保定、沧州、廊坊、邢台、邯郸河南郑州、洛阳、南阳、新乡、安阳、开封、濮阳辽宁沈阳、大连、盘锦山西太原、运城、临汾、晋城陕西西安、咸阳、延安湖北武汉、宜昌内蒙古呼和浩特、赤峰、包头四川成都、宜宾、泸州、绵阳、南充、自贡、遂宁、德阳、内江、乐山云南昆明贵州贵阳、遵义海南海口、三亚江西南昌、赣州山东济南、济宁、潍坊、淄博、烟台、聊城、滨州、菏泽、临沂、青岛浙江杭州、温州、宁波、台州、丽水、湖州、绍兴、嘉兴、金华福建福州、厦门、漳州、泉州甘肃兰州湖南长沙、衡阳、常德、株洲、湘潭、岳阳、郴州广东广州、深圳、惠州、江门、清远、东莞、汕头、佛山、中山、珠海广西南宁、柳州、桂林、玉林吉林长春、梅河口黑龙江哈尔滨、大庆宁夏银川安徽安庆、蚌埠、亳州、阜阳、合肥、马鞍山、芜湖江苏常州、淮安、连云港、南京、南通、苏州、无锡、徐州、盐城、扬州、镇江新疆乌鲁木齐",
+      "short_desc": "岗位职责根据GCP和研究方案要求，协助研究者完成各项工作：1、协助研究者完成伦理资料递交、药理机构备案及合同签署等工作，协助及时完成SAE及SUSAR等相关安全报告2、协助研究者完成试验各个阶段研究中心的文档收集、整理、归档3、协助研究者完",
+      "tags": [
+        "五险一金",
+        "包食宿",
+        "加班费",
+        "技术培训"
+      ],
+      "category": "临床研究",
+      "company_type": "医药企业",
+      "ownership": "其他",
+      "company_size": "10000人以上",
+      "contact_name": "赵颖晨",
+      "contact_role": "",
+      "phone": "029-8****805（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=219378",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=219378",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有证书者优先",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214968",
+      "title": "QC",
+      "company": "江西省鸿邦中药饮片有限公司",
+      "salary_text": "3500-4499",
+      "salary_min": 3500,
+      "salary_max": 4499,
+      "salary_band": "3-4千",
+      "location": "宜春市",
+      "city": "宜春市",
+      "district": "",
+      "address": "樟树市中医药产业园西堎路8号",
+      "education": "不限",
+      "education_level": "不限",
+      "job_type": "全职",
+      "experience": "应届可投",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-09-11",
+      "requirements": "要求药学专业，熟练检测流程操作",
+      "description": "",
+      "short_desc": "要求药学专业，熟练检测流程操作",
+      "tags": [
+        "技术培训",
+        "环境好",
+        "管理规范",
+        "包食宿",
+        "朝九晚五",
+        "加班费"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "陈纯",
+      "contact_role": "",
+      "phone": "177****8662（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214968",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214968",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214061",
+      "title": "CRC临床协调员",
+      "company": "江西稷钰安全咨询服务有限公司",
+      "salary_text": "5500-6499",
+      "salary_min": 5500,
+      "salary_max": 6499,
+      "salary_band": "5-6千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "红谷滩区",
+      "address": "江西省南昌市红谷滩区莱蒙都会5A座",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "应届可投",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "20人",
+      "posted_at": "2026-09-08",
+      "requirements": "初级CRC → 高级CRC → 资深CRC/总监可转岗：CRA / DM / PM????薪资（经验参考）月薪零经验（应届）5K–8K3年经验8K–12K5年经验12K–18K8年以上18K+",
+      "description": "初级CRC → 高级CRC → 资深CRC/总监可转岗：CRA / DM / PM\n????薪资（经验参考）\n月薪零经验（应届）5K–8K\n3年经验8K–12K\n5年经验12K–18K\n8年以上18K+",
+      "short_desc": "初级CRC → 高级CRC → 资深CRC/总监可转岗：CRA / DM / PM????薪资（经验参考）月薪零经验（应届）5K–8K3年经验8K–12K5年经验12K–18K8年以上18K+",
+      "tags": [
+        "有提成",
+        "技术培训",
+        "全勤奖",
+        "朝九晚五",
+        "管理规范",
+        "交通方便"
+      ],
+      "category": "临床研究",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "黄晶",
+      "contact_role": "",
+      "phone": "135****4255（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214061",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214061",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214094",
+      "title": "仓储实习生",
+      "company": "江西隆莱生物制药有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "进贤县",
+      "address": "江西省南昌市进贤县经济开发区198号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "2人",
+      "posted_at": "2026-09-08",
+      "requirements": "岗位职责1) 负责原辅料、包装材料及成品的入库验收、存储与发放2) 执行物料的先进先出（FIFO）及温湿度监控管理3) 维护仓储管理系统的数据录入与更新4) 参与库存盘点，确保账物一致5) 协助危险化学品专用仓库的管理任职要求◆ 物流管理、药学、化工等相关专业，大专及以上学历◆ 熟悉ERP/WMS系统操作者优先◆ 责任心强，细致认真◆ 接受优秀应届毕业生（可转正）",
+      "description": "岗位职责1) 负责原辅料、包装材料及成品的入库验收、存储与发放2) 执行物料的先进先出（FIFO）及温湿度监控管理3) 维护仓储管理系统的数据录入与更新4) 参与库存盘点，确保账物一致5) 协助危险化学品专用仓库的管理任职要求\n◆ 物流管理、药学、化工等相关专业，大专及以上学历\n◆ 熟悉ERP/WMS系统操作者优先\n◆ 责任心强，细致认真\n◆ 接受优秀应届毕业生（可转正）",
+      "short_desc": "岗位职责1) 负责原辅料、包装材料及成品的入库验收、存储与发放2) 执行物料的先进先出（FIFO）及温湿度监控管理3) 维护仓储管理系统的数据录入与更新4) 参与库存盘点，确保账物一致5) 协助危险化学品专用仓库的管理任职要求◆ 物流管理、",
+      "tags": [
+        "晋升快",
+        "五险一金"
+      ],
+      "category": "医药流通",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "雷鸣",
+      "contact_role": "",
+      "phone": "177****6316（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214094",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214094",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有证书者优先",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214091",
+      "title": "QC",
+      "company": "江西隆莱生物制药有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "进贤县",
+      "address": "江西省南昌市进贤县经济开发区198号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "8人",
+      "posted_at": "2026-09-08",
+      "requirements": "岗位职责1) 运用HPLC、GC、UV等仪器进行样品检测分析2) 执行原料、中间体、成品的理化及仪器检验3) 参与检验方法的验证与转移4) 填写检验记录，出具检验报告（COA）5) 负责实验室仪器的日常维护与校准管理任职要求◆ 分析化学、药物分析等相关专业，大专及以上学历◆ 熟练操作HPLC、GC等分析仪器◆ 了解ICH Q2、中国药典分析方法验证要求◆ 工作细致严谨，数据真实性意识强",
+      "description": "岗位职责1) 运用HPLC、GC、UV等仪器进行样品检测分析2) 执行原料、中间体、成品的理化及仪器检验3) 参与检验方法的验证与转移4) 填写检验记录，出具检验报告（COA）\n5) 负责实验室仪器的日常维护与校准管理任职要求\n◆ 分析化学、药物分析等相关专业，大专及以上学历\n◆ 熟练操作HPLC、GC等分析仪器\n◆ 了解ICH Q2、中国药典分析方法验证要求\n◆ 工作细致严谨，数据真实性意识强",
+      "short_desc": "岗位职责1) 运用HPLC、GC、UV等仪器进行样品检测分析2) 执行原料、中间体、成品的理化及仪器检验3) 参与检验方法的验证与转移4) 填写检验记录，出具检验报告（COA）5) 负责实验室仪器的日常维护与校准管理任职要求◆ 分析化学、药",
+      "tags": [
+        "晋升快",
+        "五险一金"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "雷鸣",
+      "contact_role": "",
+      "phone": "177****6316（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214091",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214091",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214092",
+      "title": "QA",
+      "company": "江西隆莱生物制药有限公司",
+      "salary_text": "4500-5499",
+      "salary_min": 4500,
+      "salary_max": 5499,
+      "salary_band": "4-5千",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "进贤县",
+      "address": "江西省南昌市进贤县经济开发区198号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "5人",
+      "posted_at": "2026-09-08",
+      "requirements": "岗位职责1) 审核批生产记录及批检验记录，签发批放行文件2) 开展供应商审计与物料质量管理3) 处理客户投诉、OOS/OOT及偏差调查4) 参与GMP自检及官方审计迎检工作5) 维护文档管理体系（SOP、验证文件等）任职要求◆ 制药工程、药学等相关专业，大专及以上学历◆ 熟悉GMP法规及ICH指导原则◆ 了解FDA、EMA审计要求者优先◆ 良好的逻辑思维与文档撰写能力",
+      "description": "岗位职责1) 审核批生产记录及批检验记录，签发批放行文件2) 开展供应商审计与物料质量管理3) 处理客户投诉、OOS/OOT及偏差调查4) 参与GMP自检及官方审计迎检工作5) 维护文档管理体系（SOP、验证文件等）\n任职要求\n◆ 制药工程、药学等相关专业，大专及以上学历\n◆ 熟悉GMP法规及ICH指导原则\n◆ 了解FDA、EMA审计要求者优先\n◆ 良好的逻辑思维与文档撰写能力",
+      "short_desc": "岗位职责1) 审核批生产记录及批检验记录，签发批放行文件2) 开展供应商审计与物料质量管理3) 处理客户投诉、OOS/OOT及偏差调查4) 参与GMP自检及官方审计迎检工作5) 维护文档管理体系（SOP、验证文件等）任职要求◆ 制药工程、药",
+      "tags": [
+        "晋升快",
+        "五险一金"
+      ],
+      "category": "药品质量",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "500-1000人",
+      "contact_name": "雷鸣",
+      "contact_role": "",
+      "phone": "177****6316（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214092",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214092",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有证书者优先",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-214088",
+      "title": "生产工艺员",
+      "company": "江西隆莱生物制药有限公司",
+      "salary_text": "5500-6499",
+      "salary_min": 5500,
+      "salary_max": 6499,
+      "salary_band": "5-6千",
+      "location": "江西省南昌市",
+      "city": "南昌市",
+      "district": "进贤县",
+      "address": "江西省南昌市进贤县经济开发区198号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "若干",
+      "posted_at": "2026-09-08",
+      "requirements": "",
+      "description": "岗位职责1) 严格按照SOP执行生产操作规程，监控反应釜温度、压力、pH等关键参数2) 填写生产批记录及相关台账，确保数据完整、准确、可追溯3) 配合研发部门完成新工艺的放大验证与生产转化4) 参与生产过程中的偏差调查与CAPA实施5) 负责生产区域的清洁、消毒及现场5S管理任职要求\n◆ 化学、制药工程、应用化学等相关专业，大专及以上学历\n◆ 了解有机合成基本原理，熟悉常用化工单元操作\n◆ 责任心强，能适应倒班工作制\n◆ 有化工/制药企业实习经验者优先",
+      "short_desc": "岗位职责1) 严格按照SOP执行生产操作规程，监控反应釜温度、压力、pH等关键参数2) 填写生产批记录及相关台账，确保数据完整、准确、可追溯3) 配合研发部门完成新工艺的放大验证与生产转化4) 参与生产过程中的偏差调查与CAPA实施5) 负",
+      "tags": [],
+      "category": "药品生产",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "",
+      "contact_name": "雷鸣",
+      "contact_role": "",
+      "phone": "177****6316（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=214088",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=214088",
+      "source": "江西省大学生就业服务平台 · 2027届招聘会",
+      "source_short": "省级招聘会",
+      "source_type": "校园招聘会",
+      "cert_required": false,
+      "cert_preferred": true,
+      "cert_note": "有证书者优先",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-212986",
+      "title": "实习生",
+      "company": "江西益丰大药房连锁有限公司",
+      "salary_text": "1950-2499",
+      "salary_min": 1950,
+      "salary_max": 2499,
+      "salary_band": "2千以下",
+      "location": "南昌市",
+      "city": "南昌市",
+      "district": "青山湖区",
+      "address": "南昌市青山湖区民安路329号",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-08-28",
+      "requirements": "实习生",
+      "description": "实习生",
+      "short_desc": "实习生",
+      "tags": [
+        "包食宿",
+        "交通方便",
+        "五险一金",
+        "年终奖",
+        "管理规范",
+        "有提成",
+        "加班费",
+        "技术培训"
+      ],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "医疗卫生单位",
+      "company_size": "500-1000人",
+      "contact_name": "付荣珍",
+      "contact_role": "",
+      "phone": "07918****738（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=212986",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=212986",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-212978",
+      "title": "中药实习生",
+      "company": "中农云河（宜春）中药科技有限公司",
+      "salary_text": "1950-2499",
+      "salary_min": 1950,
+      "salary_max": 2499,
+      "salary_band": "2千以下",
+      "location": "宜春市",
+      "city": "宜春市",
+      "district": "",
+      "address": "",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-08-28",
+      "requirements": "中药实习生",
+      "description": "中药实习生",
+      "short_desc": "中药实习生",
+      "tags": [],
+      "category": "制药企业",
+      "company_type": "医药企业",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "少于50人",
+      "contact_name": "韩海生",
+      "contact_role": "",
+      "phone": "134****0507（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=212978",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=212978",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "jx-212988",
+      "title": "实习生",
+      "company": "江西神农堂连锁大药房有限公司",
+      "salary_text": "1950-2499",
+      "salary_min": 1950,
+      "salary_max": 2499,
+      "salary_band": "2千以下",
+      "location": "宜春市",
+      "city": "宜春市",
+      "district": "",
+      "address": "",
+      "education": "专科",
+      "education_level": "专科",
+      "job_type": "实习",
+      "experience": "经验不限",
+      "freshness": "应届友好",
+      "fresh_friendly": true,
+      "headcount": "10人",
+      "posted_at": "2026-08-28",
+      "requirements": "实习生",
+      "description": "实习生",
+      "short_desc": "实习生",
+      "tags": [],
+      "category": "连锁药店",
+      "company_type": "连锁药店",
+      "ownership": "其他企业（含民营企业等）",
+      "company_size": "50-150人",
+      "contact_name": "易辉",
+      "contact_role": "",
+      "phone": "177****0828（登录后查看联系方式）",
+      "contact_note": "电话需登录省级平台查看",
+      "contact_url": "https://employment.jx.smartedu.cn/main/job/view?id=212988",
+      "url": "https://employment.jx.smartedu.cn/main/job/view?id=212988",
+      "source": "江西省大学生就业服务平台",
+      "source_short": "省级就业平台",
+      "source_type": "校园就业平台",
+      "cert_required": false,
+      "cert_preferred": false,
+      "cert_note": "",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    },
+    {
+      "id": "kq-4088706",
+      "title": "中医药剂师",
+      "company": "赣州璜金医院",
+      "salary_text": "2K～3K",
+      "salary_min": 2000,
+      "salary_max": 3000,
+      "salary_band": "2千以下",
+      "location": "赣州市章贡区",
+      "city": "赣州市",
+      "district": "章贡区",
+      "address": "江西省赣州市章贡区（蓉江新区潭赣路）",
+      "education": "大专",
+      "education_level": "专科",
+      "job_type": "全职",
+      "experience": "1年以上",
+      "freshness": "需1年经验",
+      "fresh_friendly": false,
+      "headcount": "若干",
+      "work_time": "以医院排班为准",
+      "posted_at": "2026-08-10",
+      "requirements": "负责中药饮片、中成药及西药的调配、审核、发药；负责药库验收、储存、养护、盘点；要求药学专业背景，已取得药士证。",
+      "description": "负责中药饮片、中成药及西药的调配、审核、发药；负责药库验收、储存、养护、盘点；要求药学专业背景，已取得药士证。",
+      "short_desc": "负责中药饮片、中成药及西药的调配、审核、发药；负责药库验收、储存、养护、盘点；要求药学专业背景，已取得药士证。",
+      "tags": [
+        "医院药房",
+        "中药调剂"
+      ],
+      "category": "医院药房",
+      "company_type": "医院/诊所",
+      "ownership": "",
+      "company_size": "21-100人",
+      "contact_name": "谢老师 / 曾院长",
+      "contact_role": "负责人",
+      "phone": "",
+      "contact_note": "康强医疗人才网在线沟通",
+      "contact_url": "https://www.kq36.com/job/4088706",
+      "url": "https://www.kq36.com/job/4088706",
+      "source": "康强医疗人才网",
+      "source_short": "康强医疗",
+      "source_type": "医疗招聘平台",
+      "cert_required": true,
+      "cert_preferred": false,
+      "cert_note": "需已取得药士证",
+      "is_local": false,
+      "is_guangxin": false,
+      "is_guangfeng": false
+    }
+  ]
+};
+
+</script>
+<script>
+/* 赣药职通车 · 岗位筛选与比较 */
+(() => {
+  "use strict";
+
+  const FAV_KEY = "gytc_pharm_favs_v1";
+  const CMP_KEY = "gytc_pharm_compare_v1";
+  const VIEW_KEY = "gytc_pharm_view_v1";
+  const JIANGXI = ["南昌市", "上饶市", "赣州市", "九江市", "宜春市", "吉安市", "抚州市",
+    "萍乡市", "新余市", "鹰潭市", "景德镇市", "江西省内"];
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  let DATA = window.JOBS_DATA || { jobs: [], events: [], sources: [], stats: {} };
+  let favs = loadSet(FAV_KEY);
+  let compare = loadArray(CMP_KEY).slice(0, 4);
+  let view = (() => { try { return localStorage.getItem(VIEW_KEY) || "grid"; } catch { return "grid"; } })();
+  let searchTimer = null;
+
+  const state = {
+    q: "",
+    locations: new Set(),
+    types: new Set(),
+    categories: new Set(),
+    benefits: new Set(),
+    salary: 0,
+    education: "all",
+    experience: "all",
+    cert: "all",
+    days: 0,
+    source: "all",
+    sort: "recommended",
+    favoritesOnly: false,
+    view,
+  };
+
+  const locationOptions = [
+    { value: "上饶市", label: "上饶本地" },
+    { value: "广信区", label: "广信区" },
+    { value: "广丰区", label: "广丰区" },
+    { value: "南昌市", label: "南昌" },
+    { value: "赣州市", label: "赣州" },
+    { value: "九江市", label: "九江" },
+    { value: "宜春市", label: "宜春" },
+    { value: "吉安市", label: "吉安" },
+    { value: "鹰潭市", label: "鹰潭" },
+    { value: "省外", label: "省外" },
+  ];
+
+  const categoryOrder = ["医院药房", "连锁药店", "药品生产", "药品质量", "医药流通", "医药销售", "临床研究", "制药企业", "医疗器械", "其他医药"];
+  const benefitOrder = ["五险一金", "五险", "包食宿", "包住", "包吃", "双休", "餐补", "带薪年假", "节日福利", "有提成", "技术培训", "晋升快"];
+
+  function loadSet(key) {
+    try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
+    catch { return new Set(); }
+  }
+  function loadArray(key) {
+    try { return JSON.parse(localStorage.getItem(key) || "[]"); }
+    catch { return []; }
+  }
+  function saveSet(key, set) {
+    try { localStorage.setItem(key, JSON.stringify([...set])); } catch { /* ignore */ }
+  }
+  function saveArray(key, arr) {
+    try { localStorage.setItem(key, JSON.stringify(arr)); } catch { /* ignore */ }
+  }
+
+  function esc(v) {
+    return String(v == null ? "" : v)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  function formatSalary(j) {
+    if (j.salary_min == null) return "面议";
+    const short = (n) => {
+      if (n >= 10000) return (n / 10000).toFixed(1).replace(/\.0$/, "") + "万";
+      return (n / 1000).toFixed(2).replace(/0+$/, "").replace(/\.$/, "") + "K";
+    };
+    if (j.salary_max == null || j.salary_max === j.salary_min) return short(j.salary_min);
+    return `${short(j.salary_min)}-${short(j.salary_max)}`;
+  }
+
+  function formatDate(d) {
+    if (!d) return "未注明";
+    return String(d).slice(5, 10).replace("-", "-");
+  }
+
+  function fullDate(d) {
+    return d || "未注明";
+  }
+
+  function daysAgo(d) {
+    if (!d) return 9999;
+    const t = new Date(d + "T00:00:00+08:00").getTime();
+    if (Number.isNaN(t)) return 9999;
+    return Math.max(0, Math.floor((Date.now() - t) / 86400000));
+  }
+
+  function logoOf(j) {
+    const c = j.company || "";
+    if (j.category === "医院药房") return { text: "医", cls: "hospital" };
+    if (j.category === "连锁药店") return { text: "药", cls: "chain" };
+    if (j.category === "制药企业" || j.category === "药品生产") return { text: "制", cls: "pharma" };
+    if (j.category === "药品质量") return { text: "检", cls: "pharma" };
+    if (j.category === "临床研究") return { text: "研", cls: "hospital" };
+    if (j.category === "医药流通") return { text: "流", cls: "chain" };
+    return { text: c.slice(0, 1) || "药", cls: "" };
+  }
+
+  function badgesOf(j) {
+    const out = [];
+    if (j.is_local) out.push({ cls: "local", text: "上饶本地" });
+    if (j.district === "广信区") out.push({ cls: "local", text: "广信区" });
+    if (j.district === "广丰区") out.push({ cls: "local", text: "广丰区" });
+    if (j.job_type === "实习") out.push({ cls: "intern", text: "实习/见习" });
+    if (j.fresh_friendly) out.push({ cls: "fresh", text: "应届友好" });
+    if (j.cert_required) out.push({ cls: "cert", text: j.cert_note || "需相关证书" });
+    else if (j.cert_preferred) out.push({ cls: "cert", text: "证书优先" });
+    if (j.source_type === "医疗招聘平台") out.push({ cls: "source", text: "康强直聊" });
+    return out.slice(0, 4);
+  }
+
+  function requirementsOf(j) {
+    const t = (j.requirements || j.description || "").trim();
+    if (t.length < 12) return "来源页面未展开具体要求。建议先通过下方联系方式确认工作内容、排班、是否包住及证书要求。";
+    return t;
+  }
+
+  function fitText(j) {
+    const bits = [];
+    if (j.is_local) bits.push("上饶本地");
+    if (j.fresh_friendly) bits.push("经验门槛较低");
+    if (!j.cert_required) bits.push("未硬性要求证书");
+    else bits.push(j.cert_note || "需相关证书");
+    if (j.job_type === "实习") bits.push("可先实习再转正");
+    if (j.category === "医院药房") bits.push("医院药房经历");
+    if (j.category === "连锁药店") bits.push("门店/连锁体系");
+    if (j.category === "药品质量") bits.push("QA/QC 质量方向");
+    return "适合" + bits.slice(0, 4).join("、") + "的同学重点看。";
+  }
+
+  function filtered() {
+    const q = state.q.trim().toLowerCase();
+    const tokens = q ? q.split(/\s+/).filter(Boolean) : [];
+    return DATA.jobs.filter((j) => {
+      if (state.favoritesOnly && !favs.has(j.id)) return false;
+
+      if (tokens.length) {
+        const hay = [
+          j.title, j.company, j.city, j.district, j.address, j.category,
+          j.requirements, j.description, (j.tags || []).join(" "),
+          j.contact_name, j.source_short,
+        ].join(" ").toLowerCase();
+        if (!tokens.every((t) => hay.includes(t))) return false;
+      }
+
+      if (state.locations.size) {
+        const hit = [...state.locations].some((loc) => {
+          if (loc === "上饶市") return j.is_local;
+          if (loc === "广信区") return j.district === "广信区";
+          if (loc === "广丰区") return j.district === "广丰区";
+          if (loc === "省外") return !JIANGXI.includes(j.city);
+          return j.city === loc;
+        });
+        if (!hit) return false;
+      }
+
+      if (state.types.size && !state.types.has(j.job_type)) return false;
+      if (state.categories.size && !state.categories.has(j.category)) return false;
+
+      if (state.salary > 0) {
+        if (j.salary_min == null || j.salary_min < state.salary) return false;
+      }
+
+      if (state.education === "special" && j.education_level !== "专科") return false;
+      if (state.education === "unlimited" && j.education_level !== "不限") return false;
+
+      if (state.experience === "fresh" && !j.fresh_friendly) return false;
+      if (state.experience === "experienced" && j.fresh_friendly) return false;
+
+      if (state.cert === "no-required" && j.cert_required) return false;
+      if (state.cert === "required" && !j.cert_required) return false;
+
+      if (state.benefits.size) {
+        const tags = new Set(j.tags || []);
+        if (![...state.benefits].every((b) => tags.has(b))) return false;
+      }
+
+      if (state.days > 0 && daysAgo(j.posted_at) > state.days) return false;
+
+      if (state.source === "platform" && j.source_type === "医疗招聘平台") return false;
+      if (state.source === "fair" && j.source_type !== "校园招聘会") return false;
+      if (state.source === "kq" && j.source_type !== "医疗招聘平台") return false;
+
+      return true;
+    }).sort((a, b) => {
+      if (state.sort === "newest") return (b.posted_at || "").localeCompare(a.posted_at || "");
+      if (state.sort === "salary") {
+        const av = a.salary_max == null ? -1 : a.salary_max;
+        const bv = b.salary_max == null ? -1 : b.salary_max;
+        return bv - av;
+      }
+      if (state.sort === "local") {
+        if (a.is_local !== b.is_local) return a.is_local ? -1 : 1;
+        return (b.posted_at || "").localeCompare(a.posted_at || "");
+      }
+      if (state.sort === "company") return (a.company || "").localeCompare(b.company || "", "zh-CN");
+      // recommended：本地 + 应届友好 + 无需证书 + 新鲜度
+      const score = (j) => (j.is_local ? 100 : 0) + (j.fresh_friendly ? 20 : 0) +
+        (j.cert_required ? 0 : 10) + (j.job_type === "实习" ? 5 : 0) +
+        Math.max(0, 30 - daysAgo(j.posted_at) / 10);
+      return score(b) - score(a);
+    });
+  }
+
+  function hasActiveFilters() {
+    return Boolean(state.q) || state.locations.size || state.types.size || state.categories.size ||
+      state.benefits.size || state.salary > 0 || state.education !== "all" ||
+      state.experience !== "all" || state.cert !== "all" || state.days > 0 ||
+      state.source !== "all" || state.favoritesOnly;
+  }
+
+  function activeFilterData() {
+    const out = [];
+    if (state.q) out.push({ key: "q", label: `关键词：${state.q}`, clear: "q" });
+    state.locations.forEach((v) => out.push({ key: `loc:${v}`, label: locationOptions.find((x) => x.value === v)?.label || v, clear: "loc", value: v }));
+    state.types.forEach((v) => out.push({ key: `type:${v}`, label: v, clear: "type", value: v }));
+    state.categories.forEach((v) => out.push({ key: `cat:${v}`, label: v, clear: "cat", value: v }));
+    state.benefits.forEach((v) => out.push({ key: `ben:${v}`, label: v, clear: "ben", value: v }));
+    if (state.salary) out.push({ key: "sal", label: `薪资 ≥ ${(state.salary / 1000).toFixed(1).replace(".0", "")}K`, clear: "sal" });
+    if (state.education !== "all") out.push({ key: "edu", label: state.education === "special" ? "专科可投" : "学历不限", clear: "edu" });
+    if (state.experience !== "all") out.push({ key: "exp", label: state.experience === "fresh" ? "应届/经验不限" : "需工作经验", clear: "exp" });
+    if (state.cert !== "all") out.push({ key: "cert", label: state.cert === "no-required" ? "无需证书" : "需证书", clear: "cert" });
+    if (state.days) out.push({ key: "days", label: `近${state.days}天更新`, clear: "days" });
+    if (state.source !== "all") out.push({ key: "source", label: state.source === "platform" ? "省级平台" : state.source === "fair" ? "招聘会" : "康强医疗", clear: "source" });
+    if (state.favoritesOnly) out.push({ key: "fav", label: "我的收藏", clear: "fav" });
+    return out;
+  }
+
+  function renderAll() {
+    renderStats();
+    renderFacets();
+    renderJobs();
+    renderActiveFilters();
+    renderCompareBar();
+    renderQuickState();
+    updateURL();
+  }
+
+  function renderStats() {
+    const jobs = DATA.jobs || [];
+    const local = jobs.filter((j) => j.is_local).length;
+    const intern = jobs.filter((j) => j.job_type === "实习").length;
+    const platform = jobs.filter((j) => j.source_type !== "医疗招聘平台").length;
+    const kq = jobs.filter((j) => j.source_type === "医疗招聘平台").length;
+    const set = (id, v) => { const el = $("#" + id); if (el) el.textContent = v; };
+    set("statTotal", jobs.length);
+    set("statLocal", local);
+    set("statIntern", intern);
+    set("statPlatform", platform);
+    set("statKq", kq);
+    set("lastUpdated", DATA.generated_at || "—");
+    const shown = filtered();
+    set("resultCount", `${shown.length} / ${jobs.length}`);
+    set("favCount", favs.size);
+    set("resultSummary", `上饶本地 ${local} · 实习/见习 ${intern} · 无需证书 ${jobs.filter((j) => !j.cert_required).length} · 当前显示 ${shown.length} 个`);
+  }
+
+  function countJobs(pred) {
+    return (DATA.jobs || []).filter(pred).length;
+  }
+
+  function renderFacets() {
+    const loc = $("#locChips");
+    if (loc) {
+      loc.innerHTML = locationOptions.map((o) => {
+        let n = 0;
+        if (o.value === "上饶市") n = countJobs((j) => j.is_local);
+        else if (o.value === "广信区") n = countJobs((j) => j.district === "广信区");
+        else if (o.value === "广丰区") n = countJobs((j) => j.district === "广丰区");
+        else if (o.value === "省外") n = countJobs((j) => !JIANGXI.includes(j.city));
+        else n = countJobs((j) => j.city === o.value);
+        return `<button class="chip ${state.locations.has(o.value) ? "active" : ""}" data-facet="loc" data-value="${esc(o.value)}">${esc(o.label)}<span class="n">${n}</span></button>`;
+      }).join("");
+    }
+
+    const cats = categoryOrder.filter((c) => countJobs((j) => j.category === c));
+    const cat = $("#catChips");
+    if (cat) {
+      cat.innerHTML = cats.map((c) => `<button class="chip ${state.categories.has(c) ? "active" : ""}" data-facet="cat" data-value="${esc(c)}">${esc(c)}<span class="n">${countJobs((j) => j.category === c)}</span></button>`).join("");
+    }
+
+    const bens = benefitOrder.filter((b) => countJobs((j) => (j.tags || []).includes(b)));
+    const ben = $("#benChips");
+    if (ben) {
+      ben.innerHTML = bens.map((b) => `<button class="chip ${state.benefits.has(b) ? "active" : ""}" data-facet="ben" data-value="${esc(b)}">${esc(b)}<span class="n">${countJobs((j) => (j.tags || []).includes(b))}</span></button>`).join("");
+    }
+
+    $$("[data-type]").forEach((b) => b.classList.toggle("active", state.types.has(b.dataset.type)));
+    $$("[data-edu]").forEach((b) => b.classList.toggle("active", state.education === b.dataset.edu));
+    $$("[data-exp]").forEach((b) => b.classList.toggle("active", state.experience === b.dataset.exp));
+    $$("[data-cert]").forEach((b) => b.classList.toggle("active", state.cert === b.dataset.cert));
+
+    const range = $("#salaryRange");
+    if (range) {
+      range.value = String(state.salary);
+      $("#salaryLabel").textContent = state.salary ? `≥ ${(state.salary / 1000).toFixed(1).replace(".0", "")}K` : "不限";
+    }
+
+    const favSwitch = $("#favSwitch");
+    if (favSwitch) favSwitch.checked = state.favoritesOnly;
+    const days = $("#daysSelect");
+    if (days) days.value = String(state.days);
+    const source = $("#sourceSelect");
+    if (source) source.value = state.source;
+    const sort = $("#sortSelect");
+    if (sort) sort.value = state.sort;
+  }
+
+  function renderJobs() {
+    const grid = $("#jobGrid");
+    if (!grid) return;
+    const jobs = filtered();
+    const empty = $("#emptyState");
+    grid.classList.toggle("list", state.view === "list");
+    $$("[data-view]").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
+
+    if (!jobs.length) {
+      grid.innerHTML = "";
+      if (empty) empty.hidden = false;
+      $("#resultCount").textContent = `0 / ${DATA.jobs.length}`;
+      return;
+    }
+    if (empty) empty.hidden = true;
+
+    grid.innerHTML = jobs.map((j) => {
+      const logo = logoOf(j);
+      const badges = badgesOf(j);
+      const tags = (j.tags || []).slice(0, 4);
+      const selected = compare.includes(j.id);
+      const isFav = favs.has(j.id);
+      const salary = formatSalary(j);
+      const salaryNote = j.salary_min == null ? "" : "元/月";
+      return `
+        <article class="job-card ${j.is_local ? "local" : ""} ${selected ? "selected" : ""}" data-id="${esc(j.id)}" tabindex="0" aria-label="${esc(j.title)} · ${esc(j.company)}">
+          <div class="card-top">
+            <div class="logo ${logo.cls}">${esc(logo.text)}</div>
+            <div class="company-box">
+              <div class="company-name" title="${esc(j.company)}">${esc(j.company)}</div>
+              <div class="company-sub">${esc(j.category)} · ${esc(j.company_size || j.ownership || "招聘中")}</div>
+            </div>
+            <button class="fav-btn ${isFav ? "on" : ""}" data-action="fav" aria-label="收藏" title="收藏">${isFav ? "★" : "☆"}</button>
+          </div>
+          <div class="job-title-row">
+            <h3 class="job-title">${esc(j.title)}</h3>
+            <div class="salary">${esc(salary)}<small>${salaryNote}</small></div>
+          </div>
+          <div class="badges">${badges.map((b) => `<span class="badge ${b.cls}">${esc(b.text)}</span>`).join("")}</div>
+          <div class="meta-grid">
+            <div class="meta"><i>📍</i><b>${esc(j.city)}${j.district ? " · " + esc(j.district) : ""}</b></div>
+            <div class="meta"><i>🎓</i><b>${esc(j.education || "不限")}${j.education_level === "专科" ? "及以上" : ""}</b></div>
+            <div class="meta"><i>🕒</i><b>${esc(j.job_type)} · ${esc(j.experience)}</b></div>
+            <div class="meta"><i>🗓</i><b title="${esc(fullDate(j.posted_at))}">${esc(formatDate(j.posted_at))} 更新</b></div>
+          </div>
+          <p class="desc">${esc(requirementsOf(j))}</p>
+          <div class="card-tags">${tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+          <div class="card-foot">
+            <div class="contact-mini">
+              <b>${esc(j.contact_name || "HR")}${j.contact_role ? " · " + esc(j.contact_role) : ""}</b>
+              <span>${esc(j.contact_note || "在来源平台沟通")}</span>
+            </div>
+            <div class="card-actions">
+              <button class="mini-btn" data-action="detail">详情</button>
+              <button class="mini-btn cmp ${selected ? "on" : ""}" data-action="compare">${selected ? "已加对比" : "对比"}</button>
+              <button class="mini-btn apply" data-action="apply">去投递 ↗</button>
+            </div>
+          </div>
+        </article>`;
+    }).join("");
+  }
+
+  function renderActiveFilters() {
+    const box = $("#activeFilters");
+    if (!box) return;
+    const items = activeFilterData();
+    if (!items.length) { box.innerHTML = ""; return; }
+    box.innerHTML = items.map((it) =>
+      `<span class="active-filter">${esc(it.label)}<button data-clear="${esc(it.clear)}" data-value="${esc(it.value || "")}" aria-label="移除筛选">×</button></span>`
+    ).join("") + `<button class="active-filter clear" data-clear="all">清空全部</button>`;
+  }
+
+  function renderQuickState() {
+    const map = {
+      local: state.locations.has("上饶市"),
+      guangxin: state.locations.has("广信区"),
+      guangfeng: state.locations.has("广丰区"),
+      intern: state.types.has("实习"),
+      fresh: state.experience === "fresh",
+      "no-cert": state.cert === "no-required",
+      five: state.benefits.has("五险一金"),
+    };
+    $$("[data-quick]").forEach((b) => b.classList.toggle("active", Boolean(map[b.dataset.quick])));
+  }
+
+  function renderEvents() {
+    const grid = $("#eventGrid");
+    if (!grid) return;
+    grid.innerHTML = (DATA.events || []).map((e) => {
+      const d = new Date(e.date + "T00:00:00+08:00");
+      const md = `${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      const weekday = ["日", "一", "二", "三", "四", "五", "六"][d.getDay()];
+      const upcoming = e.status === "upcoming";
+      return `
+        <a class="event-card ${upcoming ? "upcoming" : ""}" href="${esc(e.link)}" target="_blank" rel="noopener">
+          <span class="event-status ${upcoming ? "" : "past"}">${upcoming ? "即将开始" : "已举办"}</span>
+          <div class="event-date"><b>${md}</b><span>周${weekday} · ${esc(e.time)}</span></div>
+          <h3>${esc(e.title)}</h3>
+          <div class="event-loc">📍 ${esc(e.location)}</div>
+          <div class="event-nums">
+            <div><b>${e.companies}</b><span>参会企业</span></div>
+            <div><b>${e.positions}</b><span>可投职位</span></div>
+          </div>
+          <div class="event-note">${esc(e.note)}</div>
+          <span class="event-link">查看参会企业与职位 ↗</span>
+        </a>`;
+    }).join("");
+  }
+
+  function renderSources() {
+    const grid = $("#sourceGrid");
+    if (!grid) return;
+    grid.innerHTML = (DATA.sources || []).map((s) => `
+      <a class="source-card ${s.featured ? "featured" : ""}" href="${esc(s.url)}" target="_blank" rel="noopener">
+        <div class="s-top">
+          <h3>${esc(s.name)}</h3>
+          <span class="s-link">打开 ↗</span>
+        </div>
+        <p>${esc(s.desc)}</p>
+        <div class="source-tags">${(s.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
+      </a>`).join("");
+  }
+
+  function renderCompareBar() {
+    const bar = $("#compareBar");
+    if (!bar) return;
+    if (!compare.length) {
+      bar.classList.remove("show");
+      bar.innerHTML = "";
+      return;
+    }
+    const jobs = compare.map((id) => DATA.jobs.find((j) => j.id === id)).filter(Boolean);
+    bar.innerHTML = `
+      <div class="compare-chips">
+        ${jobs.map((j) => `<span class="compare-chip">${esc(j.company.slice(0, 8))} · ${esc(j.title.slice(0, 10))}<button data-remove-compare="${esc(j.id)}" aria-label="移除">×</button></span>`).join("")}
+      </div>
+      <button class="compare-clear" data-clear-compare>清空</button>
+      <button class="btn primary" data-open-compare>对比 ${jobs.length} 个</button>`;
+    bar.classList.add("show");
+  }
+
+  function openDetail(id) {
+    const j = DATA.jobs.find((x) => x.id === id);
+    if (!j) return;
+    const logo = logoOf(j);
+    const modal = $("#jobModal");
+    const body = $("#jobModalBody");
+    const head = $("#jobModalHead");
+    if (!modal || !body || !head) return;
+    head.innerHTML = `
+      <div>
+        <div class="eyebrow">岗位详情 · ${esc(j.category)}</div>
+        <h2>${esc(j.title)}</h2>
+        <p>${esc(j.company)} · ${esc(j.city)}${j.district ? " · " + esc(j.district) : ""}</p>
+      </div>
+      <button class="modal-close" data-close-modal aria-label="关闭">×</button>`;
+    body.innerHTML = `
+      <div class="detail-grid">
+        <div class="detail-main">
+          <div class="panel">
+            <div class="detail-salary">
+              <strong>${esc(formatSalary(j))}<small style="font-size:10px;color:var(--muted);font-weight:600"> 元/月</small></strong>
+              <span>${esc(j.job_type)} · ${esc(j.source_short)}</span>
+            </div>
+            <div class="facts">
+              <div class="fact"><span>工作地点</span><b>${esc(j.city)}${j.district ? " · " + esc(j.district) : ""}</b></div>
+              <div class="fact"><span>学历要求</span><b>${esc(j.education || "不限")}${j.education_level === "专科" ? "及以上" : ""}</b></div>
+              <div class="fact"><span>经验要求</span><b>${esc(j.experience)}</b></div>
+              <div class="fact"><span>招聘人数</span><b>${esc(j.headcount || "若干")}</b></div>
+              <div class="fact"><span>工作时间</span><b>${esc(j.work_time || "以单位排班为准")}</b></div>
+              <div class="fact"><span>更新日期</span><b>${esc(fullDate(j.posted_at))}</b></div>
+              <div class="fact"><span>证书要求</span><b>${esc(j.cert_required ? (j.cert_note || "需相关证书") : (j.cert_preferred ? (j.cert_note || "有证优先") : "未硬性要求"))}</b></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h4>岗位要求 / 工作内容</h4>
+            <div class="req-text">${esc(requirementsOf(j))}</div>
+          </div>
+          <div class="panel">
+            <h4>福利与标签</h4>
+            <div class="benefit-list">${(j.tags || []).map((t) => `<span class="benefit">${esc(t)}</span>`).join("") || "<span class='source-note'>来源页面未列出福利标签</span>"}</div>
+            <div class="source-note" style="margin-top:10px">${esc(fitText(j))}</div>
+          </div>
+          <div class="panel">
+            <h4>工作地址</h4>
+            <div class="req-text">${esc(j.address || j.location || "来源页面未提供详细地址")}</div>
+          </div>
+        </div>
+        <div class="detail-side">
+          <div class="panel contact-panel">
+            <h4>联系方式</h4>
+            <div class="contact-person">
+              <div class="contact-avatar">${esc((j.contact_name || "HR").slice(0, 1))}</div>
+              <div><b>${esc(j.contact_name || "招聘负责人")}</b><span>${esc(j.contact_role || j.company)}</span></div>
+            </div>
+            <div class="contact-line">
+              ${j.phone ? `电话：<strong>${esc(j.phone)}</strong><br>` : ""}
+              ${esc(j.contact_note || "在来源平台内沟通")}
+            </div>
+            <a class="btn primary" href="${esc(j.contact_url || j.url)}" target="_blank" rel="noopener">打开来源页面投递 ↗</a>
+            <button class="btn ghost" data-copy-job="${esc(j.id)}">复制岗位链接</button>
+          </div>
+          <div class="panel">
+            <h4>信息来源</h4>
+            <div class="source-note">
+              ${esc(j.source)}<br>
+              发布于 ${esc(fullDate(j.posted_at))}。招聘信息具有时效性，投递前请以来源页面为准；平台不会以任何名义收取费用。
+            </div>
+            <a class="btn ghost small" style="margin-top:10px;width:100%" href="${esc(j.url)}" target="_blank" rel="noopener">查看原始页面 ↗</a>
+          </div>
+          <div class="panel">
+            <h4>一键操作</h4>
+            <button class="btn ${compare.includes(j.id) ? "dark" : "soft"}" style="width:100%;margin-bottom:7px" data-compare-job="${esc(j.id)}">${compare.includes(j.id) ? "已加入对比" : "加入对比"}</button>
+            <button class="btn ghost" style="width:100%" data-fav-job="${esc(j.id)}">${favs.has(j.id) ? "★ 已收藏" : "☆ 收藏岗位"}</button>
+          </div>
+        </div>
+      </div>`;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+    setURLParam("job", j.id);
+  }
+
+  function closeModal() {
+    $$(".modal-backdrop").forEach((m) => {
+      m.classList.remove("open");
+      m.setAttribute("aria-hidden", "true");
+    });
+    document.body.classList.remove("no-scroll");
+    setURLParam("job", null);
+  }
+
+  function openCompare() {
+    if (compare.length < 2) { toast("至少选择 2 个岗位才能对比"); return; }
+    const jobs = compare.map((id) => DATA.jobs.find((j) => j.id === id)).filter(Boolean);
+    const modal = $("#compareModal");
+    const body = $("#compareModalBody");
+    if (!modal || !body) return;
+    const rows = [
+      ["薪资", (j) => `<span class="c-price">${esc(formatSalary(j))}</span>`],
+      ["单位", (j) => `${esc(j.company)}<br><span style="color:var(--muted);font-size:9px">${esc(j.category)} · ${esc(j.company_size || j.ownership || "")}</span>`],
+      ["地点", (j) => `${esc(j.city)}${j.district ? " · " + esc(j.district) : ""}`],
+      ["类型", (j) => `${esc(j.job_type)} / ${esc(j.experience)}`],
+      ["学历", (j) => `${esc(j.education || "不限")}${j.education_level === "专科" ? "及以上" : ""}`],
+      ["证书", (j) => esc(j.cert_required ? (j.cert_note || "需相关证书") : (j.cert_preferred ? (j.cert_note || "有证优先") : "未硬性要求"))],
+      ["福利", (j) => esc((j.tags || []).join("、") || "未注明")],
+      ["工时", (j) => esc(j.work_time || "以排班为准")],
+      ["更新", (j) => esc(fullDate(j.posted_at))],
+      ["联系", (j) => `${esc(j.contact_name || "HR")}${j.contact_role ? " · " + esc(j.contact_role) : ""}<br><span style="color:var(--muted);font-size:9px">${esc(j.contact_note || "")}</span>`],
+      ["来源", (j) => `<a href="${esc(j.url)}" target="_blank" rel="noopener" style="color:var(--teal);font-weight:700">${esc(j.source_short)} ↗</a>`],
+    ];
+    body.innerHTML = `
+      <div class="compare-scroll">
+        <table class="compare-table">
+          <thead><tr><th>对比项</th>${jobs.map((j) => `<th style="width:auto"><div class="c-head"><div><b>${esc(j.title)}</b><span>${esc(j.company)}</span></div><button class="c-del" data-remove-compare="${esc(j.id)}" aria-label="移除">×</button></div></th>`).join("")}</tr></thead>
+          <tbody>
+            ${rows.map(([label, fn]) => `<tr><th>${label}</th>${jobs.map((j) => `<td>${fn(j)}</td>`).join("")}</tr>`).join("")}
+            <tr><th>操作</th>${jobs.map((j) => `<td><a class="mini-btn apply" href="${esc(j.url)}" target="_blank" rel="noopener" style="display:inline-block">去投递 ↗</a></td>`).join("")}</tr>
+          </tbody>
+        </table>
+      </div>`;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function toggleFav(id) {
+    if (favs.has(id)) favs.delete(id); else favs.add(id);
+    saveSet(FAV_KEY, favs);
+    $("#favCount").textContent = favs.size;
+    renderJobs();
+    if ($("#jobModal").classList.contains("open")) {
+      const j = DATA.jobs.find((x) => x.id === id);
+      if (j) openDetail(id);
+    }
+    toast(favs.has(id) ? "已收藏，可在顶部“收藏”中查看" : "已取消收藏");
+  }
+
+  function toggleCompare(id) {
+    const idx = compare.indexOf(id);
+    if (idx >= 0) compare.splice(idx, 1);
+    else {
+      if (compare.length >= 4) { toast("最多对比 4 个岗位"); return; }
+      compare.push(id);
+    }
+    saveArray(CMP_KEY, compare);
+    renderJobs();
+    renderCompareBar();
+    if ($("#jobModal").classList.contains("open")) openDetail(id);
+    if ($("#compareModal").classList.contains("open")) openCompare();
+  }
+
+  function applyJob(id) {
+    const j = DATA.jobs.find((x) => x.id === id);
+    if (!j) return;
+    window.open(j.contact_url || j.url, "_blank", "noopener");
+    toast("已打开来源页面，请在平台内登录/沟通后投递");
+  }
+
+  function toast(msg) {
+    const t = $("#toast");
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => t.classList.remove("show"), 2600);
+  }
+
+  async function copyText(text, okMsg) {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast(okMsg || "已复制");
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); toast(okMsg || "已复制"); }
+      catch { toast("复制失败，请手动选择链接"); }
+      ta.remove();
+    }
+  }
+
+  function share() {
+    const url = buildURL(true);
+    const text = `江西高职药学 2027 届就业岗位（${filtered().length} 个）`;
+    if (navigator.share && location.protocol !== "file:") {
+      navigator.share({ title: "赣药职通车 · 就业雷达", text, url }).catch(() => {});
+    } else {
+      copyText(url, location.protocol === "file:" ? "已复制本机路径；部署到网上后可分享筛选链接" : "筛选链接已复制，可直接分享");
+    }
+  }
+
+  function buildURL(withState = false) {
+    const u = new URL(location.href);
+    u.hash = "";
+    if (withState) {
+      const p = new URLSearchParams();
+      if (state.q) p.set("q", state.q);
+      if (state.locations.size) p.set("loc", [...state.locations].join(","));
+      if (state.types.size) p.set("type", [...state.types].join(","));
+      if (state.categories.size) p.set("cat", [...state.categories].join(","));
+      if (state.benefits.size) p.set("ben", [...state.benefits].join(","));
+      if (state.salary) p.set("sal", String(state.salary));
+      if (state.education !== "all") p.set("edu", state.education);
+      if (state.experience !== "all") p.set("exp", state.experience);
+      if (state.cert !== "all") p.set("cert", state.cert);
+      if (state.days) p.set("days", String(state.days));
+      if (state.source !== "all") p.set("source", state.source);
+      if (state.sort !== "recommended") p.set("sort", state.sort);
+      if (state.favoritesOnly) p.set("fav", "1");
+      if (compare.length) p.set("cmp", compare.join(","));
+      if (view !== "grid") p.set("view", view);
+      u.search = p.toString();
+    }
+    return u.toString();
+  }
+
+  function updateURL() {
+    if (location.protocol === "file:") return;
+    try {
+      const u = buildURL(true);
+      history.replaceState(null, "", u);
+    } catch { /* ignore */ }
+  }
+
+  function setURLParam(key, value) {
+    if (location.protocol === "file:") return;
+    try {
+      const u = new URL(location.href);
+      if (value == null) u.searchParams.delete(key);
+      else u.searchParams.set(key, value);
+      history.replaceState(null, "", u);
+    } catch { /* ignore */ }
+  }
+
+  function parseURL() {
+    const p = new URLSearchParams(location.search);
+    if (p.get("q")) state.q = p.get("q");
+    if (p.get("loc")) p.get("loc").split(",").filter(Boolean).forEach((v) => state.locations.add(v));
+    if (p.get("type")) p.get("type").split(",").filter(Boolean).forEach((v) => state.types.add(v));
+    if (p.get("cat")) p.get("cat").split(",").filter(Boolean).forEach((v) => state.categories.add(v));
+    if (p.get("ben")) p.get("ben").split(",").filter(Boolean).forEach((v) => state.benefits.add(v));
+    if (p.get("sal")) state.salary = Number(p.get("sal")) || 0;
+    if (p.get("edu")) state.education = p.get("edu");
+    if (p.get("exp")) state.experience = p.get("exp");
+    if (p.get("cert")) state.cert = p.get("cert");
+    if (p.get("days")) state.days = Number(p.get("days")) || 0;
+    if (p.get("source")) state.source = p.get("source");
+    if (p.get("sort")) state.sort = p.get("sort");
+    if (p.get("fav") === "1") state.favoritesOnly = true;
+    if (p.get("view")) view = p.get("view");
+    state.view = view;
+    if (p.get("cmp")) {
+      compare = p.get("cmp").split(",").filter(Boolean).slice(0, 4);
+      saveArray(CMP_KEY, compare);
+    }
+    const search = $("#searchInput");
+    if (search && state.q) search.value = state.q;
+    const job = p.get("job");
+    if (job) setTimeout(() => openDetail(job), 80);
+    if (p.get("cmp")) setTimeout(() => { if (compare.length >= 2) openCompare(); }, 160);
+  }
+
+  function resetFilters() {
+    state.q = "";
+    state.locations.clear();
+    state.types.clear();
+    state.categories.clear();
+    state.benefits.clear();
+    state.salary = 0;
+    state.education = "all";
+    state.experience = "all";
+    state.cert = "all";
+    state.days = 0;
+    state.source = "all";
+    state.sort = "recommended";
+    state.favoritesOnly = false;
+    const s = $("#searchInput");
+    if (s) s.value = "";
+    renderAll();
+  }
+
+  function bind() {
+    const grid = $("#jobGrid");
+    if (grid) {
+      grid.addEventListener("click", (e) => {
+        const card = e.target.closest(".job-card");
+        if (!card) return;
+        const id = card.dataset.id;
+        const action = e.target.closest("[data-action]")?.dataset.action;
+        if (action === "fav") { e.stopPropagation(); toggleFav(id); return; }
+        if (action === "compare") { e.stopPropagation(); toggleCompare(id); return; }
+        if (action === "apply") { e.stopPropagation(); applyJob(id); return; }
+        if (e.target.closest("a")) return;
+        openDetail(id);
+      });
+      grid.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          const card = e.target.closest(".job-card");
+          if (card) { e.preventDefault(); openDetail(card.dataset.id); }
+        }
+      });
+    }
+
+    const search = $("#searchInput");
+    if (search) {
+      search.addEventListener("input", () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => { state.q = search.value.trim(); renderAll(); }, 140);
+      });
+    }
+
+    const filters = $(".filters");
+    if (filters) {
+      filters.addEventListener("click", (e) => {
+        const chip = e.target.closest("[data-facet]");
+        if (chip) {
+          const facet = chip.dataset.facet;
+          const value = chip.dataset.value;
+          const map = { loc: state.locations, cat: state.categories, ben: state.benefits };
+          const set = map[facet];
+          if (set) { set.has(value) ? set.delete(value) : set.add(value); renderAll(); }
+          return;
+        }
+        const type = e.target.closest("[data-type]");
+        if (type) {
+          const v = type.dataset.type;
+          state.types.has(v) ? state.types.delete(v) : state.types.add(v);
+          renderAll(); return;
+        }
+        const edu = e.target.closest("[data-edu]");
+        if (edu) { state.education = edu.dataset.edu; renderAll(); return; }
+        const exp = e.target.closest("[data-exp]");
+        if (exp) { state.experience = exp.dataset.exp; renderAll(); return; }
+        const cert = e.target.closest("[data-cert]");
+        if (cert) { state.cert = cert.dataset.cert; renderAll(); return; }
+      });
+    }
+
+    const salary = $("#salaryRange");
+    if (salary) {
+      salary.addEventListener("input", () => {
+        state.salary = Number(salary.value);
+        $("#salaryLabel").textContent = state.salary ? `≥ ${(state.salary / 1000).toFixed(1).replace(".0", "")}K` : "不限";
+      });
+      salary.addEventListener("change", renderAll);
+    }
+
+    const favSwitch = $("#favSwitch");
+    if (favSwitch) favSwitch.addEventListener("change", () => { state.favoritesOnly = favSwitch.checked; renderAll(); });
+
+    const days = $("#daysSelect");
+    if (days) days.addEventListener("change", () => { state.days = Number(days.value); renderAll(); });
+    const source = $("#sourceSelect");
+    if (source) source.addEventListener("change", () => { state.source = source.value; renderAll(); });
+    const sort = $("#sortSelect");
+    if (sort) sort.addEventListener("change", () => { state.sort = sort.value; renderAll(); });
+
+    $$("[data-view]").forEach((b) => b.addEventListener("click", () => {
+      view = b.dataset.view; state.view = view;
+      try { localStorage.setItem(VIEW_KEY, view); } catch { /* ignore */ }
+      renderJobs();
+    }));
+
+    const reset = $("#resetFilters");
+    if (reset) reset.addEventListener("click", resetFilters);
+
+    const resetEmpty = $("#resetEmpty");
+    if (resetEmpty) resetEmpty.addEventListener("click", resetFilters);
+
+    const shareBtn = $("#shareBtn");
+    if (shareBtn) shareBtn.addEventListener("click", share);
+
+    const favBtn = $("#favoritesBtn");
+    if (favBtn) favBtn.addEventListener("click", () => {
+      state.favoritesOnly = !state.favoritesOnly;
+      renderAll();
+      if (state.favoritesOnly) $("#jobs").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    const localBtn = $("#localBtn");
+    if (localBtn) localBtn.addEventListener("click", () => {
+      state.locations.clear();
+      state.locations.add("上饶市");
+      renderAll();
+      $("#jobs").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.addEventListener("click", (e) => {
+      const quick = e.target.closest("[data-quick]");
+      if (quick) {
+        const q = quick.dataset.quick;
+        if (q === "local") { state.locations.has("上饶市") ? state.locations.delete("上饶市") : state.locations.add("上饶市"); }
+        if (q === "guangxin") { state.locations.has("广信区") ? state.locations.delete("广信区") : state.locations.add("广信区"); }
+        if (q === "guangfeng") { state.locations.has("广丰区") ? state.locations.delete("广丰区") : state.locations.add("广丰区"); }
+        if (q === "intern") { state.types.has("实习") ? state.types.delete("实习") : state.types.add("实习"); }
+        if (q === "fresh") { state.experience = state.experience === "fresh" ? "all" : "fresh"; }
+        if (q === "no-cert") { state.cert = state.cert === "no-required" ? "all" : "no-required"; }
+        if (q === "five") { state.benefits.has("五险一金") ? state.benefits.delete("五险一金") : state.benefits.add("五险一金"); }
+        renderAll();
+        return;
+      }
+
+      const clear = e.target.closest("[data-clear]");
+      if (clear) {
+        const key = clear.dataset.clear;
+        const value = clear.dataset.value;
+        if (key === "all") { resetFilters(); return; }
+        if (key === "q") { state.q = ""; if ($("#searchInput")) $("#searchInput").value = ""; }
+        if (key === "loc") state.locations.delete(value);
+        if (key === "type") state.types.delete(value);
+        if (key === "cat") state.categories.delete(value);
+        if (key === "ben") state.benefits.delete(value);
+        if (key === "sal") state.salary = 0;
+        if (key === "edu") state.education = "all";
+        if (key === "exp") state.experience = "all";
+        if (key === "cert") state.cert = "all";
+        if (key === "days") state.days = 0;
+        if (key === "source") state.source = "all";
+        if (key === "fav") state.favoritesOnly = false;
+        renderAll();
+        return;
+      }
+
+      const removeCmp = e.target.closest("[data-remove-compare]");
+      if (removeCmp) {
+        const id = removeCmp.dataset.removeCompare;
+        compare = compare.filter((x) => x !== id);
+        saveArray(CMP_KEY, compare);
+        renderJobs(); renderCompareBar();
+        if ($("#compareModal").classList.contains("open")) {
+          compare.length >= 2 ? openCompare() : closeModal();
+        }
+        return;
+      }
+
+      if (e.target.closest("[data-clear-compare]")) {
+        compare = []; saveArray(CMP_KEY, compare); renderJobs(); renderCompareBar(); return;
+      }
+
+      if (e.target.closest("[data-open-compare]")) { openCompare(); return; }
+      if (e.target.closest("[data-close-modal]")) { closeModal(); return; }
+
+      const copyJob = e.target.closest("[data-copy-job]");
+      if (copyJob) {
+        const j = DATA.jobs.find((x) => x.id === copyJob.dataset.copyJob);
+        if (j) {
+          const url = new URL(location.href);
+          url.searchParams.set("job", j.id);
+          copyText(url.toString(), "岗位链接已复制");
+        }
+        return;
+      }
+
+      const cmpJob = e.target.closest("[data-compare-job]");
+      if (cmpJob) { toggleCompare(cmpJob.dataset.compareJob); return; }
+      const favJob = e.target.closest("[data-fav-job]");
+      if (favJob) { toggleFav(favJob.dataset.favJob); return; }
+    });
+
+    $$(".modal-backdrop").forEach((m) => {
+      m.addEventListener("click", (e) => { if (e.target === m) closeModal(); });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+        e.preventDefault();
+        $("#searchInput")?.focus();
+      }
+    });
+
+    const openFilters = $("#openFilters");
+    const filterBackdrop = $("#filterBackdrop");
+    const closeFilters = () => { $(".filters")?.classList.remove("open"); filterBackdrop?.classList.remove("open"); };
+    if (openFilters) openFilters.addEventListener("click", () => {
+      $(".filters")?.classList.add("open");
+      filterBackdrop?.classList.add("open");
+    });
+    if (filterBackdrop) filterBackdrop.addEventListener("click", closeFilters);
+
+    const refresh = $("#refreshData");
+    if (refresh) refresh.addEventListener("click", refreshData);
+  }
+
+  async function refreshData() {
+    const btn = $("#refreshData");
+    const statusEl = $("#updateStatus");
+    if (location.protocol === "file:") {
+      toast("本地文件模式不能自动抓取；请双击“更新数据.bat”后刷新页面");
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.textContent = "检查中…"; }
+    if (statusEl) statusEl.textContent = "正在检查数据源…";
+    try {
+      const sres = await fetch("api/status", { cache: "no-store" });
+      if (sres.ok) {
+        const s = await sres.json();
+        if (s.running) { toast("已有更新任务在运行，请稍候"); return; }
+        const r = await fetch("api/refresh", { method: "POST" });
+        if (!r.ok) throw new Error("refresh failed");
+        toast("已开始同步，完成后会自动刷新");
+        if (statusEl) statusEl.textContent = "正在同步省级就业平台…";
+        for (let i = 0; i < 90; i++) {
+          await new Promise((res) => setTimeout(res, 2000));
+          const st = await fetch("api/status", { cache: "no-store" }).then((x) => x.json()).catch(() => null);
+          if (!st) continue;
+          if (statusEl) statusEl.textContent = st.running ? "正在抓取并整理岗位…" : (st.last_error ? "同步失败：" + st.last_error : "同步完成");
+          if (!st.running) {
+            if (st.last_error) { toast("同步失败，请查看服务端日志"); return; }
+            await loadLatestData();
+            renderAll();
+            renderEvents(); renderSources();
+            toast(`同步完成，共 ${DATA.jobs.length} 个岗位`);
+            return;
+          }
+        }
+        toast("同步耗时较长，请稍后刷新页面查看");
+        return;
+      }
+
+      // 静态部署：只检查 data/jobs.json 是否有更新
+      const res = await fetch(`data/jobs.json?ts=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error("no data");
+      const latest = await res.json();
+      if (latest.generated_at && latest.generated_at !== DATA.generated_at) {
+        DATA = latest;
+        renderAll(); renderEvents(); renderSources();
+        if (statusEl) statusEl.textContent = `已载入最新快照：${latest.generated_at}`;
+        toast("已载入最新数据快照");
+      } else {
+        if (statusEl) statusEl.textContent = `当前已是最新快照：${DATA.generated_at}`;
+        toast("当前已是最新快照；自动更新需运行 server.py 或启用 GitHub Actions");
+      }
+    } catch {
+      if (statusEl) statusEl.textContent = "静态模式：无法连接更新服务";
+      toast("未能连接更新服务；请运行 server.py 或查看 README 的自动更新说明");
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = "检查更新"; }
+    }
+  }
+
+  async function checkForNewData() {
+    if (location.protocol === "file:" || document.visibilityState !== "visible") return;
+    if (document.body.classList.contains("no-scroll")) return;
+    try {
+      const res = await fetch(`data/jobs.json?ts=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return;
+      const latest = await res.json();
+      if (latest.generated_at && latest.generated_at !== DATA.generated_at) {
+        DATA = latest;
+        renderAll();
+        renderEvents();
+        renderSources();
+        const statusEl = $("#updateStatus");
+        if (statusEl) statusEl.textContent = `已自动载入新快照：${latest.generated_at}`;
+        toast("检测到新岗位数据，页面已自动更新");
+      }
+    } catch { /* 静态环境忽略 */ }
+  }
+
+  async function loadLatestData() {
+    const fallback = window.JOBS_DATA;
+    if (location.protocol === "file:") return fallback;
+    try {
+      const res = await fetch(`data/jobs.json?ts=${Date.now()}`, { cache: "no-store" });
+      if (res.ok) {
+        const d = await res.json();
+        if (d && Array.isArray(d.jobs) && d.jobs.length) return d;
+      }
+    } catch { /* ignore */ }
+    return fallback;
+  }
+
+  async function init() {
+    DATA = await loadLatestData();
+    parseURL();
+    const validIds = new Set((DATA.jobs || []).map((j) => j.id));
+    favs = new Set([...favs].filter((id) => validIds.has(id)));
+    compare = compare.filter((id) => validIds.has(id)).slice(0, 4);
+    saveSet(FAV_KEY, favs);
+    saveArray(CMP_KEY, compare);
+    bind();
+    renderEvents();
+    renderSources();
+    renderAll();
+    const statusEl = $("#updateStatus");
+    if (statusEl) statusEl.textContent = `当前快照：${DATA.generated_at || "—"}`;
+    if (location.protocol !== "file:") {
+      setInterval(checkForNewData, 10 * 60 * 1000);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") checkForNewData();
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+
+</script>
 </body>
 </html>
